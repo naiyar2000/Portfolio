@@ -1,6 +1,7 @@
 "use client";
 
 import { useScrollPosition } from "@/hooks/useScrollPosition";
+import { prefix } from "@/prefix";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -22,7 +23,7 @@ const Header = () => {
             </div>
             <div className="md:hidden">
                 <Image
-                    src={"/icons/hamburgerIcon.svg"}
+                    src={`${prefix}/icons/hamburgerIcon.svg`}
                     alt={"option"}
                     width={40}
                     height={30}

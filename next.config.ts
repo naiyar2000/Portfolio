@@ -1,10 +1,16 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
-  basePath: "/Portfolio",
-  output: "export",
-  reactStrictMode: true,
+/** @type {import('next').NextConfig} */
+let envImageUnoptimize = process.env.NODE_ENV !== "production" ? false : true
+const nextConfig = {
+  output: process.env.NODE_ENV !== "production" ? undefined : "export",
+  images: {
+    unoptimized: envImageUnoptimize,
+    remotePatterns: [
+      {
+        hostname: "images.unsplash.com",
+      },
+    ],
+  },
+  
 };
 
-export default nextConfig;
+module.exports = nextConfig;

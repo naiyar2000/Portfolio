@@ -19,3 +19,9 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.hero-image {
+  background-image: url("/images/hero-image.jpg");
+  background-size: cover;
+  height: 100%;
+}

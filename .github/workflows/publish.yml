@@ -66,9 +66,6 @@ jobs:
       - name: Build with Next.js
         run: pnpm next build
 
-      - name: Export static site
-        run: pnpm next export
-
       - name: List files to check if 'out' directory exists
         run: ls -la 
       

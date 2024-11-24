@@ -54,7 +54,11 @@ jobs:
           static_site_generator: next
 
       - name: Build with Next.js
-        run: pnpm next build
+        run: |
+          echo "Building project..."
+          pnpm next build
+          echo "Build completed. Listing contents..."
+          ls -la
         env:
           NODE_ENV: production
 

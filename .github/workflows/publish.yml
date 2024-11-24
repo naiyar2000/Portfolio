@@ -65,6 +65,16 @@ jobs:
           static_site_generator: next
       - name: Build with Next.js
         run: pnpm next build
+
+      - name: List files to check if 'out' directory exists
+        run: ls -la 
+      
+      - name: Set permissions and upload artifact
+        run: |
+          chmod -c -R +rX ./out
+          tar -czvf out.tar.gz ./out
+        with: path: ./out
+      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:

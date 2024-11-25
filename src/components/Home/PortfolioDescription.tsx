@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link';
 import React, { useState } from 'react'
 
-let layoutTypes = [
+const layoutTypes = [
     {
         title: "Grid: Overlay",
         src: "grid-overlay-1000w.png"

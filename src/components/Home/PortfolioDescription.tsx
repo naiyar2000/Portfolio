@@ -4,6 +4,7 @@ import { prefix } from '@/prefix'
 import Image from 'next/image'
 import Link from 'next/link';
 import React, { useState } from 'react'
+import TransitionComponent from '../AnimatedComponents/TransitionComponent';
 
 const layoutTypes = [
     {
@@ -30,18 +31,20 @@ const PortfolioDescription = () => {
 
     return (
         <div style={{ backgroundColor: "#9a9190" }} className="text-black text-xs font-semibold flex flex-col w-full justify-center items-center pt-10 pb-24">
-            <div className="text-white flex flex-col items-center gap-6 mb-10">
-                <div className="w-80 text-center">
-                    <span className="text-4xl">
-                        {"Create a portfolio that stands out."}
-                    </span>
+            <TransitionComponent transitionProps={{ transitionType: "down-to-top" }}>
+                <div className="text-white flex flex-col items-center gap-6 mb-10">
+                    <div className="w-80 text-center">
+                        <span className="text-4xl">
+                            {"Create a portfolio that stands out."}
+                        </span>
+                    </div>
+                    <div className="w-2/5 text-center">
+                        <span className="text-xl">
+                            {"Choose from a variety of unique layouts to build an online portfolio that best displays your work. Add individual projects to keep your website organized and easy-to-navigate."}
+                        </span>
+                    </div>
                 </div>
-                <div className="w-2/5 text-center">
-                    <span className="text-xl">
-                        {"Choose from a variety of unique layouts to build an online portfolio that best displays your work. Add individual projects to keep your website organized and easy-to-navigate."}
-                    </span>
-                </div>
-            </div>
+            </TransitionComponent>
             <div className="w-1/2">
                 <div className="flex px-4 bg-white ">
                     <div className="flex-1 content-center">
@@ -60,7 +63,7 @@ const PortfolioDescription = () => {
                         </svg>
                     </div>
                 </div>
-                <div className="w-full" style={{height: "0.8px"}}></div>
+                <div className="w-full" style={{ height: "0.8px" }}></div>
                 <div className="w-full relative">
                     <Image src={`${prefix}/images/${selectedLayoutType.src}`} className="w-full mb-3" alt='description image' width={10000} height={10000} />
                     <div className="absolute bg-white -bottom-10 -right-40 w-56 rounded-sm">
@@ -89,7 +92,9 @@ const PortfolioDescription = () => {
                             <span className="text-xl font-semibold underline text-white">VIEW SPOT TEMPLATE</span>
                         </Link>
                     </div>
-                    <span className="text-white mt-2">{"Click to see how easy it is to change layouts"}</span>
+                    <TransitionComponent transitionProps={{ transitionType: "down-to-top" }}>
+                        <span className="text-white mt-2">{"Click to see how easy it is to change layouts"}</span>
+                    </TransitionComponent>
                 </div>
             </div>
         </div>

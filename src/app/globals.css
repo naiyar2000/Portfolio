@@ -5,12 +5,50 @@
 
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar {
-      display: none;
+    display: none;
   }
+
   .no-scrollbar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;  
-}
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .animated-bar {
+    @apply absolute left-0 rounded-xl;
+    height: 3px;
+    top: -2.5px;
+    animation: animated-bar-animation 1s alternate-reverse infinite;
+  }
+
+  .left-to-right {
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+  .right-to-left {
+    opacity: 0;
+    transform: translateX(100px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+  .left-to-right.animate, .right-to-left.animate {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .top-to-down {
+    opacity: 0;
+    transform: translateY(-50px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+  .down-to-top {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+  .top-to-down.animate, .down-to-top.animate {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 body {
@@ -51,6 +89,7 @@ body {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
@@ -83,7 +122,25 @@ body {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
 }
+
+
+@keyframes animated-bar-animation {
+  from {
+    width: 2rem;
+    background-color: rgba(12, 12, 12, 0.349);
+    opacity: 0;
+  }
+  
+  to {
+    transform: translateX(350%);
+    width: 8rem;
+    background-color: rgba(0, 0, 0, 0.542);
+    opacity: 1;
+  }
+}
+

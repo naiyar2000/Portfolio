@@ -10,7 +10,7 @@ const Header = () => {
     const { scrollPosition } = useScrollPosition();
 
     return (
-        <div className={`w-full text-white ${scrollPosition > 0 ? "bg-black" : "bg-transparent"} px-5 md:px-14 py-2 h-20 flex justify-between items-center fixed top-0 z-10`}>
+        <div className={`w-full text-white ${scrollPosition > 0 ? "bg-stone-900" : "bg-transparent"} px-5 md:px-14 py-2 h-20 flex justify-between items-center fixed top-0 z-10`}>
             <div>
                 <Link href={"/"}>
                     <span className="font-bold from-neutral-400 text-2xl">Portfolio</span>

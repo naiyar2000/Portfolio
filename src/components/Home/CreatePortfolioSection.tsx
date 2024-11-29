@@ -2,6 +2,7 @@ import { prefix } from '@/prefix'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import TransitionComponent from '../AnimatedComponents/TransitionComponent'
 
 const templateData = [
     {
@@ -31,10 +32,14 @@ const CreatePortfolioSection = () => {
         <div className="bg-white flex flex-col gap-4 pb-20">
             <div className="flex text-black gap-28 px-10 pt-16">
                 <div className='flex flex-col'>
-                    <span className="text-4xl font-bold">{"Pick your"}</span>
-                    <span className="text-4xl font-bold">{"starting point"}</span>
+                    <TransitionComponent transitionProps={{ threshold: 0.5, transitionType: "down-to-top" }}>
+                        <div className="flex flex-col">
+                            <span className="text-4xl font-bold">{"Pick your"}</span>
+                            <span className="text-4xl font-bold">{"starting point"}</span>
+                        </div>
+                    </TransitionComponent>
                 </div>
-                <div className="flex-1 flex flex-col items-center">
+                <TransitionComponent transitionProps={{ threshold: 0.5, transitionType: "down-to-top" }} className="flex-1 flex flex-col items-center">
                     <div className="w-1/2">
                         <span className="text-xl font-semibold">{"Simply add a portfolio page or section to the Squarespace template of your choice. Or, get inspired by browsing the most popular portfolio website templates."}</span>
                         <Link href={"/"}>
@@ -48,7 +53,7 @@ const CreatePortfolioSection = () => {
                             </div>
                         </Link>
                     </div>
-                </div>
+                </TransitionComponent>
             </div>
             <div className="flex overflow-x-auto no-scrollbar gap-10 text-black">
                 {

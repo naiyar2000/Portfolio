@@ -2,6 +2,7 @@ import { prefix } from '@/prefix'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import TransitionComponent from '../AnimatedComponents/TransitionComponent'
 
 const sellPageData = [
     {
@@ -39,38 +40,40 @@ const SellAnythingSection = () => {
                     </span>
                 </div>
             </div>
-            <div className="flex gap-5 text-black px-24">
-                {
-                    sellPageData.map((i) => (
-                        <div key={i.title} className="flex-1 flex flex-col gap-10">
-                            <div className="max-h-72">
-                                <Image
-                                    src={`${prefix}/images/${i.imgSrc}`}
-                                    alt={i.title}
-                                    width={580}
-                                    height={580}
-                                    className='w-full h-full'
-                                />
-                            </div>
-                            <div className="">
-                                <div className="flex flex-col gap-2 mb-4 font-bold">
-                                    <div className="">
-                                        <span className="text-3xl">{i.title}</span>
-                                    </div>
-                                    <div className="">
-                                        <span className="text-base">{i.subTitle}</span>
-                                    </div>
+            <TransitionComponent transitionProps={{transitionType: "down-to-top"}} className="flex gap-5 text-black px-24">
+                <>
+                    {
+                        sellPageData.map((i) => (
+                            <div key={i.title} className="flex-1 flex flex-col gap-10">
+                                <div className="max-h-72">
+                                    <Image
+                                        src={`${prefix}/images/${i.imgSrc}`}
+                                        alt={i.title}
+                                        width={580}
+                                        height={580}
+                                        className='w-full h-full'
+                                    />
                                 </div>
-                                <Link href={i.link}>
-                                    <span className="underline text-lg">
-                                        {"LEARN MORE"}
-                                    </span>
-                                </Link>
+                                <div className="">
+                                    <div className="flex flex-col gap-2 mb-4 font-bold">
+                                        <div className="">
+                                            <span className="text-3xl">{i.title}</span>
+                                        </div>
+                                        <div className="">
+                                            <span className="text-base">{i.subTitle}</span>
+                                        </div>
+                                    </div>
+                                    <Link href={i.link}>
+                                        <span className="underline text-lg">
+                                            {"LEARN MORE"}
+                                        </span>
+                                    </Link>
+                                </div>
                             </div>
-                        </div>
-                    ))
-                }
-            </div>
+                        ))
+                    }
+                </>
+            </TransitionComponent>
         </div>
     )
 }

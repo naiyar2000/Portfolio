@@ -35,7 +35,7 @@ type GLTFResult = GLTF & {
 
 
 export function MyAvatar(props: any) {
-    const { nodes, materials, animations } = useGLTF(`${prefix}/model/avatar/my_avatar.glb`) as GLTFResult
+    const { nodes, materials } = useGLTF(`${prefix}/model/avatar/my_avatar.glb`) as GLTFResult
 
     return (
         <group {...props} dispose={null}>

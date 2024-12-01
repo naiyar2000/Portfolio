@@ -34,13 +34,13 @@ const ThreeDSection = ({
     useEffect(() => {
         if (isMobile) {
             setPosition(prev => {
-                let temp = [...prev];
+                const temp = [...prev];
                 temp[3] = isAvatar ? temp[3] * 1 : temp[3] * 2;
                 temp[0] = isAvatar ? temp[0] * 1 : temp[0] * 3;
                 return temp;
             })
         }
-    }, [isMobile])
+    }, [isMobile, isAvatar])
 
     // Update position based on slider value
     const handleInputChange = (axis: "x" | "y" | "z" | "scale", event: React.ChangeEvent<HTMLInputElement>) => {

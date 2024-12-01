@@ -2,7 +2,7 @@ import React from 'react';
 import TransitionComponent from '../AnimatedComponents/TransitionComponent';
 import ThreeDSection from '../ThreeDSection/ThreeDSection';
 
-let scrollingSection: {
+const scrollingSection: {
   title: string,
   desc: string,
 }[] = [

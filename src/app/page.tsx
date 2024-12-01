@@ -1,15 +1,18 @@
-import CreatePortfolioSection from "@/components/Home/CreatePortfolioSection";
+import AboutSection from "@/components/Home/AboutSection";
 import CustomPortfolioWork from "@/components/Home/CustomPortfolioWork";
 import HeroSection from "@/components/Home/HeroSection";
-import OneSideScrollSection from "@/components/Home/OneSideScrollSection";
 import PortfolioDescription from "@/components/Home/PortfolioDescription";
 import SellAnythingSection from "@/components/Home/SellAnythingSection";
+import SkillSection from "@/components/Home/SkillSection";
+import WorkSection from "@/components/Home/WorkSection";
 
 export default function Home() {
   return (
-    <>
+    <div className="bg-black">
       <HeroSection />
-      <CreatePortfolioSection />
+      <AboutSection />
+      <SkillSection />
+      {/* <WorkSection />
       <PortfolioDescription />
       <CustomPortfolioWork
         title={"A custom portfolio for your custom work"}
@@ -22,8 +25,7 @@ export default function Home() {
         subTitle={"While you work on exhibiting your digital portfolio, Squarespace AI can act as your personal creative agency and provide on-brand copy you need to perfectly showcase your work. Get started with tailored recommendations to build your website with AI."}
         image={"ai-block-2-750w.jpg"}
         backgroundColor="#000000"
-      />
-      <OneSideScrollSection />
-    </>
+      /> */}
+    </div>
   );
 }

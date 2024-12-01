@@ -1,10 +1,10 @@
 import AboutSection from "@/components/Home/AboutSection";
-import CustomPortfolioWork from "@/components/Home/CustomPortfolioWork";
+// import CustomPortfolioWork from "@/components/Home/CustomPortfolioWork";
 import HeroSection from "@/components/Home/HeroSection";
-import PortfolioDescription from "@/components/Home/PortfolioDescription";
-import SellAnythingSection from "@/components/Home/SellAnythingSection";
+// import PortfolioDescription from "@/components/Home/PortfolioDescription";
+// import SellAnythingSection from "@/components/Home/SellAnythingSection";
 import SkillSection from "@/components/Home/SkillSection";
-import WorkSection from "@/components/Home/WorkSection";
+// import WorkSection from "@/components/Home/WorkSection";
 
 export default function Home() {
   return (

@@ -1,6 +1,3 @@
-import useInView from '@/hooks/useInView';
-import { prefix } from '@/prefix';
-import Image from 'next/image';
 import React from 'react';
 import TransitionComponent from '../AnimatedComponents/TransitionComponent';
 import ThreeDSection from '../ThreeDSection/ThreeDSection';

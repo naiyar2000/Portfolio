@@ -9,7 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-checkbox": "^1.1.2",
+    "@radix-ui/react-dialog": "^1.1.2",
+    "@radix-ui/react-dropdown-menu": "^2.1.2",
     "@radix-ui/react-popover": "^1.1.2",
+    "@radix-ui/react-select": "^2.1.2",
     "@radix-ui/react-slider": "^1.2.1",
     "@radix-ui/react-slot": "^1.1.0",
     "@react-three/drei": "^9.118.0",
@@ -27,7 +31,8 @@
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.171.0",
-    "three-stdlib": "^2.34.0"
+    "three-stdlib": "^2.34.0",
+    "zustand": "^5.0.1"
   },
   "devDependencies": {
     "@types/node": "^20",

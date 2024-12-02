@@ -91,8 +91,8 @@ const ThreeDSection = ({
             <Canvas className='flex h-full w-full items-center justify-center'>
                 <ambientLight intensity={7} />
                 <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
-                <OrbitControls enableZoom={false} maxPolarAngle={Math.PI / 2} />
-
+                {!isMobile && <OrbitControls enableZoom={false} maxPolarAngle={Math.PI / 2} />
+                }
                 <Suspense fallback={<>{"loading"}</>}>
                     {
                         isAvatar ? <MyAvatar

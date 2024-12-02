@@ -8,7 +8,7 @@ import SkillSection from "@/components/Home/SkillSection";
 
 export default function Home() {
   return (
-    <div className="bg-black">
+    <div>
       <HeroSection />
       <AboutSection />
       <SkillSection />

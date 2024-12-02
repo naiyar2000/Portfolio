@@ -23,7 +23,7 @@ const scrollingSection: {
 const AboutSection = () => {
 
   return (
-    <div className="relative w-full flex flex-col gap-6 py-8 md:flex-row bg-gray-800 text-slate-200">
+    <div className="relative w-full flex flex-col gap-6 py-8 md:flex-row text-slate-200">
       <div className="flex flex-col justify-center items-center md:sticky top-20 h-screen flex-1">
         <div className="flex flex-col h-3/4 gap-2">
           <h1 className="text-3xl md:text-5xl font-bold">{"Welcome to My Portfolio"}</h1>

@@ -4,7 +4,7 @@ import ThreeDSection from '../ThreeDSection/ThreeDSection'
 
 const SkillSection = () => {
     return (
-        <div className="flex flex-col md:flex-row w-full md:h-auto h-screen overflow-visible px-4 md:px-10 py-8 md:py-24 gap-2 bg-black items-stretch shadow-lg">
+        <div className="flex flex-col md:flex-row w-full md:h-auto h-screen overflow-visible px-4 md:px-10 py-8 md:py-24 gap-2 items-stretch">
             <div className="animate-character-section w-full md:w-1/3 min-h-full  rounded-md">
                 <ThreeDSection />
             </div>

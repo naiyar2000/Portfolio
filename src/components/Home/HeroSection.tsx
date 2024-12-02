@@ -7,8 +7,8 @@ const subTitle = "Showcasing the work of a passionate frontend developer.";
 
 const HeroSection = () => {
     return (
-        <div className="relative h-full bg-black">
-            <div className="absolute rounded-sm text-slate-300 bg-opacity-50 top-40 left-5 md:bg-none md:bg-opacity-0 md:top-1/4 md:w-1/3 md:left-16 md:text-white flex flex-col md:gap-2 gap-5">
+        <div className="relative h-full">
+            <div className="absolute rounded-sm text-slate-300 bg-opacity-50 top-40 z-10 left-5 md:bg-none md:bg-opacity-0 md:top-1/4 md:w-1/3 md:left-16 md:text-white flex flex-col md:gap-2 gap-5">
                 <span className="text-lg font-bold md:text-xl md:font-medium">{"CODE > CREATIONS"}</span>
                 <TransitionComponent transitionProps={{ transitionType: "left-to-right" }}>
                     <h1 className="font-bold text-4xl md:text-6xl pr-4">{title}</h1>

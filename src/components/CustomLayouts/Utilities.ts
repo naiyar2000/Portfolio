@@ -1,5 +1,7 @@
-export const drawPolkatDot = (canvas: HTMLCanvasElement, context: CanvasRenderingContext2D, cancelToken: { cancel: boolean, frameId?: number }) => {
+export const drawPolkatDot = (canvas: HTMLCanvasElement, cancelToken: { cancel: boolean, frameId?: number }) => {
     const ratio = window.devicePixelRatio || 1;
+    const context = canvas.getContext("2d")
+    if (context === null) return;
     canvas.width = window.innerWidth * ratio;
     canvas.height = window.innerHeight * ratio;
     context.scale(ratio, ratio); const dots: { x: number; y: number; r: number; speed: number }[] = [];
@@ -40,10 +42,12 @@ export const drawPolkatDot = (canvas: HTMLCanvasElement, context: CanvasRenderin
 }
 
 
-export const matrixRain = (canvas: HTMLCanvasElement, context: CanvasRenderingContext2D, cancelToken: { cancel: boolean, frameId?: number }) => {
+export const matrixRain = (canvas: HTMLCanvasElement, cancelToken: { cancel: boolean, frameId?: number }) => {
     const ratio = window.devicePixelRatio || 1;
     canvas.width = window.innerWidth * ratio;
     canvas.height = window.innerHeight * ratio;
+    const context = canvas.getContext("2d")
+    if (context === null) return;
     context.scale(ratio, ratio);
 
     const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
@@ -101,3 +105,120 @@ export const matrixRain = (canvas: HTMLCanvasElement, context: CanvasRenderingCo
 
 
 }
+
+export const mouseCloud = (canvas: HTMLCanvasElement) => {
+    const ctx = canvas.getContext("2d")
+    if (!canvas && !ctx) return;
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const cloud: {
+        x: number;
+        y: number;
+        segments: {
+            x: number;
+            y: number;
+            alpha: number;
+        }[];
+        radius: number;
+        dx: number;
+        dy: number;
+        friction: number;
+        alpha?: any
+    } = {
+        x: window.innerWidth / 2,
+        y: window.innerHeight / 2,
+        segments: Array.from({ length: 20 }, (_, i) => ({
+            x: window.innerWidth / 2,
+            y: window.innerHeight / 2,
+            alpha: 1 - i * 0.05
+        })),
+        radius: 15,
+        dx: 0,
+        dy: 0,
+        friction: 0.8,
+
+    };
+
+    const mouse = {
+        x: null as number | null,
+        y: null as number | null,
+    };
+
+    let mouseStopped = false;
+    let stopTimer: any;
+
+    window.addEventListener('mousemove', (event) => {
+        mouse.x = event.x;
+        mouse.y = event.y;
+        cloud.alpha = 1; // Reset alpha on mouse move
+        mouseStopped = false;
+        clearTimeout(stopTimer);
+        stopTimer = setTimeout(() => {
+            mouseStopped = true;
+        }, 200); // Adjust the delay as needed
+    });
+
+    function drawCloud() {
+        if (ctx === null) return;
+        ctx.save();
+        ctx.globalAlpha = 1;
+        cloud.segments.forEach(segment => {
+            ctx.globalAlpha = segment.alpha;
+            const gradient = ctx.createRadialGradient(segment.x, segment.y, 0, segment.x, segment.y, cloud.radius);
+            gradient.addColorStop(0, 'rgba(0, 255, 0, 0.7)');
+            gradient.addColorStop(1, 'rgba(0, 255, 0, 0)');
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(segment.x, segment.y, cloud.radius, 0, Math.PI * 2);
+            ctx.closePath();
+            ctx.fill();
+        });
+        ctx.restore();
+    }
+
+    function updateCloud() {
+        if (mouse.x !== null && mouse.y !== null) {
+            cloud.dx += (mouse.x - cloud.x) * 0.03;
+            cloud.dy += (mouse.y - cloud.y) * 0.03;
+        }
+
+        cloud.dx *= cloud.friction;
+        cloud.dy *= cloud.friction;
+
+        cloud.x += cloud.dx;
+        cloud.y += cloud.dy;
+
+        // Update segment positions
+        cloud.segments.unshift({ x: cloud.x, y: cloud.y, alpha: 1 });
+        if (cloud.segments.length > 20) {
+            cloud.segments.pop();
+        }
+
+        // Slow fade effect
+        cloud.segments.forEach(segment => {
+            if (mouseStopped) {
+                segment.alpha *= 0.98; // Slow fade out
+            }
+        });
+    }
+
+    function animate() {
+        if (ctx === null) return;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        updateCloud();
+        drawCloud();
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+};
+
+
+

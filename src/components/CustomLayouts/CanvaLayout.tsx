@@ -1,9 +1,8 @@
 "use client";
 
 import React, { useEffect, useRef } from 'react';
-import { drawPolkatDot, matrixRain } from './Utilities';
-import {  useAppStore } from '@/store/appStore';
-
+import { drawPolkatDot, matrixRain, mouseCloud } from './Utilities';
+import { useAppStore } from '@/store/appStore';
 
 const CanvaLayout = () => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -14,31 +13,40 @@ const CanvaLayout = () => {
         const canvas = canvasRef.current;
         if (!canvas) return;
 
-        const context = canvas.getContext('2d');
-        if (!context) return;
 
-        // Create a cancel token 
         let cancelToken = { cancel: false, frameId: undefined };
-        clearCanvas(canvas, context);
+        if (pattern !== "matrix-rain") {
+
+            const context = canvas.getContext('2d');
+            if (!context) return;
+
+            // Create a cancel token 
+            clearCanvas(canvas, context);
+
+        }
 
         switch (pattern) {
             case "polka-dot":
             case "polka-dot-clipped":
-                drawPolkatDot(canvas, context, cancelToken);
+                drawPolkatDot(canvas, cancelToken);
                 break;
             case "matrix-rain":
             case "matrix-rain-clipped":
-                matrixRain(canvas, context, cancelToken);
+                matrixRain(canvas, cancelToken);
+                break;
+            case "mouse-cloud":
+                mouseCloud(canvas);
                 break;
             default:
-                drawPolkatDot(canvas, context, cancelToken);
+                drawPolkatDot(canvas, cancelToken);
         }
 
         return () => {
             if (cancelToken.frameId !== undefined) { cancelAnimationFrame(cancelToken.frameId); }
             cancelToken.cancel = true;
         };
-    }, [pattern, isClipEnabled]);
+
+    }, [pattern, isClipEnabled, canvasRef]);
 
     return (
         <div className={`${isFixed ? "fixed" : "absolute"} layout-canvas top-0 left-0 h-full w-full -z-10`}>

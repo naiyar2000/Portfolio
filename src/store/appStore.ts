@@ -4,10 +4,12 @@ import { devtools } from 'zustand/middleware'
 export type CanvaPatternType = "matrix-rain" |
     "matrix-rain-clipped" |
     "polka-dot" |
+    "mouse-cloud" |
     "polka-dot-clipped";
 
 export type LayoutType = "video" |
     "canvas" |
+    "canvasWebGl" |
     "default";
 
 export interface CanvaLayoutDataType {
@@ -32,7 +34,7 @@ export const useAppStore = create<AppStore>()(devtools((set) => ({
     layoutType: "canvas",
     canvaLayoutState: {
         clipPath: "polygon(0 1%, 100% 0, 100% 38%, 79% 80%, 46% 55%, 18% 38%)",
-        pattern: "polka-dot",
+        pattern: "mouse-cloud",
         isFixed: false,
         isClipEnabled: false,
     },

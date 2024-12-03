@@ -48,6 +48,7 @@ export const SettingsComponent = () => {
                                     ([
                                         "video",
                                         "canvas",
+                                        "canvasWebGl"
                                     ] as LayoutType[])?.map(item => (
                                         <SelectItem
                                             key={item}
@@ -79,6 +80,7 @@ export const SettingsComponent = () => {
                                     ([
                                         "matrix-rain",
                                         "polka-dot",
+                                        "mouse-cloud"
                                     ] as CanvaPatternType[])?.map(item => (
                                         <SelectItem
                                             key={item}

@@ -4,7 +4,7 @@ import { prefix } from '@/prefix'
 import Image from 'next/image'
 import Link from 'next/link';
 import React, { useState } from 'react'
-import TransitionComponent from '../AnimatedComponents/TransitionComponent';
+import TransitionComponent from './AnimatedComponents/TransitionComponent';
 
 const layoutTypes = [
     {

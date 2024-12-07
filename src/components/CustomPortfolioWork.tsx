@@ -1,7 +1,7 @@
 import { prefix } from '@/prefix'
 import Image from 'next/image'
 import React from 'react'
-import TransitionComponent from '../AnimatedComponents/TransitionComponent'
+import TransitionComponent from './AnimatedComponents/TransitionComponent'
 
 interface CustomPortfolioWorkProps {
     title: string,

@@ -7,9 +7,10 @@ import * as THREE from 'three'
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover'
 import { MyAvatar } from './MyAvatar'
 import { Button } from '../ui/button'
-import { useClientMediaQuery } from '@/hooks/useClientMediaQuery'
+import { useClientMediaQuery } from '@/app/hooks/useClientMediaQuery'
 import { Clapperboard, PartyPopper, FerrisWheel, Laugh, Play, Pause, Frame } from "lucide-react"
 import { Slider } from "@/components/ui/slider";
+import CanvasLoader from './CanvasLoader'
 
 type ActionTypes = "dance" | "backflip" | "sideflip" | "laugh";
 
@@ -89,11 +90,11 @@ const ThreeDSection = ({
                 </div>
             )}
             <Canvas className='flex h-full w-full items-center justify-center'>
-                <ambientLight intensity={7} />
-                <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
-                {!isMobile && <OrbitControls enableZoom={false} maxPolarAngle={Math.PI / 2} />
-                }
-                <Suspense fallback={<>{"loading"}</>}>
+                <Suspense fallback={null}>
+                    <ambientLight intensity={7} />
+                    <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
+                    {!isMobile && <OrbitControls enableZoom={false} maxPolarAngle={Math.PI / 2} />
+                    }
                     {
                         isAvatar ? <MyAvatar
                             position={new THREE.Vector3(position[0], position[1], position[2])}

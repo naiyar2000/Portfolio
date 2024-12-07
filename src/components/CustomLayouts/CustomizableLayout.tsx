@@ -4,6 +4,7 @@ import CanvaLayout from './CanvaLayout'
 import { useAppStore } from '@/store/appStore';
 import VideoLayout from './VideoLayout';
 import CanvaLayoutWebGl from './CanvaLayoutWebGl';
+import BlurLayout from './BlurLayout';
 
 const CustomizableLayout = () => {
     const layoutType = useAppStore(state => state.layoutType);
@@ -15,7 +16,7 @@ const CustomizableLayout = () => {
         case "video":
             return <VideoLayout />
         case "default":
-            return <></>
+            return <BlurLayout />
         default:
             return <></>
     }

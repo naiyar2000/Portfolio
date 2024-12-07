@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef } from 'react';
-import { useAppStore } from '@/store/appStore';
 import { initFluid } from "./fluidSimulation.js"
+import { useAppStore } from '@/store/appStore';
 
 const CanvaLayoutWebGl = () => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);

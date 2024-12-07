@@ -12,6 +12,43 @@ body {
 }
 
 
+@keyframes rotate {
+  from {
+    rotate: 0deg;
+  }
+  
+  50% {
+    scale: 1 1.5;
+  }
+  
+  to {
+    rotate: 360deg;
+  }
+}
+
+#blob {
+  background-color: white;
+  height: 100px;
+  width: 100px;
+  aspect-ratio: 1;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: linear-gradient(to right, aquamarine, mediumpurple);
+  animation: rotate 20s infinite;
+  opacity: 0.8;
+}
+
+#blur {
+  height: 100%;
+  width: 100%;
+  /* position: absolute; */
+  /* z-index: 0; */
+  backdrop-filter: blur(75px);
+}
+
 .neon-button {
   display: inline-block;
   cursor: pointer;
@@ -141,6 +178,14 @@ body {
 
   .custom-transparent-background {
     background-image: var(--transpare-glass-background);
+  }
+
+  .bg-glass {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(3.5px);
+    -webkit-backdrop-filter: blur(3.5px);
+    border-radius: 10px;
   }
 
 

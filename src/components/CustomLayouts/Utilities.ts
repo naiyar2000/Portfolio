@@ -4,7 +4,8 @@ export const drawPolkatDot = (canvas: HTMLCanvasElement, cancelToken: { cancel: 
     if (context === null) return;
     canvas.width = window.innerWidth * ratio;
     canvas.height = window.innerHeight * ratio;
-    context.scale(ratio, ratio); const dots: { x: number; y: number; r: number; speed: number }[] = [];
+    context.scale(ratio, ratio);
+    const dots: { x: number; y: number; r: number; speed: number }[] = [];
     const numDots = 100;
     // Number of dots
     // Initialize dots with random positions, sizes, and speeds 
@@ -44,10 +45,10 @@ export const drawPolkatDot = (canvas: HTMLCanvasElement, cancelToken: { cancel: 
 
 export const matrixRain = (canvas: HTMLCanvasElement, cancelToken: { cancel: boolean, frameId?: number }) => {
     const ratio = window.devicePixelRatio || 1;
-    canvas.width = window.innerWidth * ratio;
-    canvas.height = window.innerHeight * ratio;
     const context = canvas.getContext("2d")
     if (context === null) return;
+    canvas.width = window.innerWidth * ratio;
+    canvas.height = window.innerHeight * ratio;
     context.scale(ratio, ratio);
 
     const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
@@ -106,7 +107,7 @@ export const matrixRain = (canvas: HTMLCanvasElement, cancelToken: { cancel: boo
 
 }
 
-export const mouseCloud = (canvas: HTMLCanvasElement) => {
+export const mouseCloud = (canvas: HTMLCanvasElement, cancelToken: { cancel: boolean, frameId?: number }) => {
     const ctx = canvas.getContext("2d")
     if (!canvas && !ctx) return;
 
@@ -205,6 +206,10 @@ export const mouseCloud = (canvas: HTMLCanvasElement) => {
     }
 
     function animate() {
+        if (cancelToken.cancel) {
+            clearTimeout(stopTimer);
+            return; // Stop the animation if the cancel token is set
+        }
         if (ctx === null) return;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         updateCloud();
@@ -212,12 +217,7 @@ export const mouseCloud = (canvas: HTMLCanvasElement) => {
         requestAnimationFrame(animate);
     }
 
-    animate();
-
-    window.addEventListener('resize', () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    });
+    requestAnimationFrame(animate);
 };
 
 

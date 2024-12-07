@@ -1,6 +1,9 @@
+// "use client";
 import React from 'react';
 import TransitionComponent from '../AnimatedComponents/TransitionComponent';
 import ThreeDSection from '../ThreeDSection/ThreeDSection';
+// import { useAboutStore } from '@/store/aboutStore';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 const scrollingSection: {
   title: string,
@@ -22,34 +25,51 @@ const scrollingSection: {
 
 const AboutSection = () => {
 
+  // const { aboutPageData, loading, setAboutPageData } = useAboutStore();
+  // useEffect(() => {
+  //   setAboutPageData()
+  // }, [])
+
   return (
     <div className="relative w-full flex flex-col gap-6 py-8 md:flex-row text-slate-200">
       <div className="flex flex-col justify-center items-center md:sticky top-20 h-screen flex-1">
-        <div className="flex flex-col h-3/4 gap-2">
+        <div className="flex flex-col h-3/4 gap-1 items-center">
           <h1 className="text-3xl md:text-5xl font-bold">{"Welcome to My Portfolio"}</h1>
-          <ThreeDSection
+          {/* <ThreeDSection
             isAvatar={true}
             isControlEnabled={false}
-            initialPosition={[0, -6, 3, 3.8]} />
+            initialPosition={[0, -6, 3, 3.8]} /> */}
+          <div className="w-full">
+            <DotLottieReact
+            className='w-full'
+              src="/animatedSVG.lottie"
+              loop
+              autoplay
+            />
+          </div>
         </div>
       </div>
       <div className="flex-1 flex justify-center font-bold">
-        <div className="px-5 md:w-3/4 flex flex-col gap-24 md:py-24 justify-center items-center">
-          {
-            scrollingSection.map((item) => {
-              return <TransitionComponent key={item.title} transitionProps={{ transitionType: 'down-to-top', threshold: 0.2 }}>
-                <div className={`relative flex flex-col box-content justify-center w-full border-t-2 border-t-slate-300 pt-2 md:pt-4 md:min-h-96`}>
-                  <div className="animated-bar"></div>
-                  <div className="flex flex-col gap-6 md:w-4/5">
-                    <h1 className="text-2xl md:text-4xl">{item.title}</h1>
-                    <h1 className="text-lg md:text-2xl">{item.desc}</h1>
+        {
+          // !loading && 
+          <div className="px-5 md:w-3/4 flex flex-col gap-24 md:py-24 justify-center items-center">
+            {
+              scrollingSection?.map((item) => {
+                return <TransitionComponent key={item.title} transitionProps={{ transitionType: 'down-to-top', threshold: 0.2 }}>
+                  <div className={`relative flex flex-col box-content justify-start w-full border-t-2 border-t-slate-300 pt-2 md:pt-6 md:min-h-72`}>
+                    <div className="animated-bar"></div>
+                    <div className="flex flex-col gap-6 md:w-full">
+                      <h1 className="text-2xl md:text-4xl">{item.title}</h1>
+                      {/* <h1 className="text-lg md:text-lg text-slate-400">{item.description}</h1> */}
+                      <h1 className="text-lg md:text-lg text-slate-400">{item.desc}</h1>
+                    </div>
                   </div>
-                </div>
-              </TransitionComponent>
+                </TransitionComponent>
+              }
+              )
             }
-            )
-          }
-        </div>
+          </div>
+        }
       </div>
     </div>
   );

@@ -1,39 +1,56 @@
-import { prefix } from '@/prefix'
-import React from 'react'
-import TransitionComponent from '../AnimatedComponents/TransitionComponent'
-import GitHubCalendar from 'react-github-calendar';
+"use client"
+import React, { useEffect } from 'react'
+import { useHomeStore } from '@/store/homeStore'
+import useAuthStore from '@/store/authStore'
+import TextComponent from './TextComponent'
+import { Button } from '../ui/button'
+import { RefreshCcw } from 'lucide-react'
+import Image from 'next/image'
+// import GitHubCalendar from 'react-github-calendar';
 
-const title = "Build with Code, Design with Purpose";
-const subTitle = "Showcasing the work of a passionate frontend developer.";
 
 const HeroSection = () => {
+    const { homePageData, setHomePageData } = useHomeStore();
+
+    const { user } = useAuthStore();
+
+    useEffect(() => {
+        // setHomePageData();
+    }, [user])
+
     return (
         <div className="relative min-h-screen">
             <div className="absolute top-40 left-5 md:left-16 z-10 flex">
-                <div className="text-slate-300 md:top-1/4 md:w-2/4 md:text-white flex flex-col md:gap-2 gap-5">
-                    <span className="text-lg font-bold md:text-xl md:font-medium">{"CODE > CREATIONS"}</span>
-                    <TransitionComponent transitionProps={{ transitionType: "left-to-right" }}>
-                        <h1 className="font-bold text-4xl md:text-6xl pr-4">{title}</h1>
-                    </TransitionComponent>
-                    <div className="pr-24 flex flex-col gap-16 md:gap-10 items-start">
-                        <TransitionComponent transitionProps={{ transitionType: "right-to-left" }}>
-                            <h2 className="font-semibold text-2xl leading-6">
-                                {subTitle}
-                            </h2>
-                        </TransitionComponent>
-                        <TransitionComponent transitionProps={{ transitionType: "down-to-top" }}>
-                            <a href={`${prefix}/pdf/Naiyar_resume.pdf`} download="Naiyar_Imam" className="neon-button no-underline text-lg">
-                                {"DOWNLOAD CV"}
-                            </a>
-                        </TransitionComponent>
-                    </div>
+                {
+                    !homePageData.loading && <TextComponent />
+                }
+                {/* <Button onClick={setHomePageData}><RefreshCcw /></Button> */}
+
+            </div>
+            <div className="absolute right-1/4 top-36 portfolio-image md:block hidden z-40">
+                <div className="relative scale-110">
+                    <div className='absolute bottom-0 -z-10' style={{
+                        borderRadius: "82% 18% 44% 56% / 47% 24% 76% 53%",
+                        height: "370px",
+                        background: "#748174",
+                        width: "300px",
+                    }}></div>
+                    <Image
+                        src="/images/naiyar.png"
+                        alt=""
+                        height={500}
+                        width={500}
+                        className=""
+                        style={{
+                            borderRadius: "0% 18% 44% 56% / 47% 24% 76% 53%",
+                            height: "auto",
+                            width: "300px",
+                        }}
+                    />
                 </div>
-                {/* <div className="self-center custom-transparent-background rounded-sm text-lg font-bold text-green-500 p-2 ">
-                <GitHubCalendar username="naiyar2000" colorScheme='dark' />
-                </div> */}
             </div>
 
-        </div>
+        </div >
     )
 }
 

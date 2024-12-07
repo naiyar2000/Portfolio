@@ -1,5 +1,5 @@
 "use client";
-import useInView from '@/hooks/useInView'
+import useInView from '@/app/hooks/useInView'
 import React from 'react'
 
 type TransitionType = "left-to-right" | "right-to-left" | "top-to-down" | "down-to-top" | "";

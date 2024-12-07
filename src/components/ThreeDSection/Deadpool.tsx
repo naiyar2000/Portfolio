@@ -7,7 +7,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
 import { prefix } from '@/prefix'
-import { useClientMediaQuery } from '@/hooks/useClientMediaQuery'
+import { useClientMediaQuery } from '@/app/hooks/useClientMediaQuery'
 type GLTFResult = GLTF & {
     nodes: {
         Object_2002: THREE.SkinnedMesh

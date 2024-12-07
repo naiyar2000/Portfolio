@@ -1,9 +1,11 @@
-import AboutSection from "@/components/Home/AboutSection";
+"use client";
+import AboutSection from "@/components/About/AboutSection";
 // import CustomPortfolioWork from "@/components/Home/CustomPortfolioWork";
 import HeroSection from "@/components/Home/HeroSection";
+import CodeSandboxSection from "@/components/Work/CodeSandboxSection";
 // import PortfolioDescription from "@/components/Home/PortfolioDescription";
 // import SellAnythingSection from "@/components/Home/SellAnythingSection";
-import SkillSection from "@/components/Home/SkillSection";
+import SkillSection from "@/components/Work/SkillSection";
 // import WorkSection from "@/components/Home/WorkSection";
 
 export default function Home() {
@@ -11,6 +13,7 @@ export default function Home() {
     <div>
       <HeroSection />
       <AboutSection />
+      <CodeSandboxSection />
       <SkillSection />
       {/* <WorkSection />
       <PortfolioDescription />

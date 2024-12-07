@@ -1,12 +1,15 @@
 "use client";
 import { CanvaLayoutDataType, CanvaPatternType, LayoutType, useAppStore } from "@/store/appStore";
-import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "../ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "../ui/dialog";
 import { Button } from "../ui/button";
 import { Layout } from "lucide-react";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "../ui/select";
 import { Checkbox } from "../ui/checkbox";
+import useAuthStore from "@/store/authStore";
 
 export const SettingsComponent = () => {
+
+    const { user } = useAuthStore();
 
     const setCanvaLayoutType = useAppStore(state => state.setCanvaLayoutType);
     const { pattern, isFixed, isClipEnabled } = useAppStore(state => state.canvaLayoutState);
@@ -21,12 +24,13 @@ export const SettingsComponent = () => {
 
     return <div className="fixed top-20 right-20 z-50">
         <Dialog open={isSettingsOpen} onOpenChange={(open) => { if (!open) toggleSetting(); }}>
-            <DialogTrigger asChild>
+            <DialogTrigger asChild className={`${user ? "block" : "hidden"}`}>
                 <Button onClick={toggleSetting} className='bg-black opacity-65 rounded-sm backdrop-blur-md text-white text-sm px-2 py-1'>
                     <Layout />
                 </Button>
             </DialogTrigger>
-            <DialogContent>
+            <DialogDescription></DialogDescription>
+            <DialogContent className="bg-glass text-white">
                 <DialogTitle>
                     Layout Settings
                 </DialogTitle>
@@ -91,22 +95,28 @@ export const SettingsComponent = () => {
                             </SelectGroup>
                         </SelectContent>
                     </Select>
-                    <div className="flex gap-6">
-                        <Checkbox checked={isFixed} onCheckedChange={() => changeLayout({ isFixed: !isFixed })} />
-                        <label>
-                            Fixed
-                        </label>
-                        <Checkbox
-                            checked={isClipEnabled}
-                            onCheckedChange={() => changeLayout({ isClipEnabled: !isClipEnabled })}
-                        />
-                        <label>
-                            Clipped
-                        </label>
+                    <div className="flex gap-6 items-center">
+                        <div className="flex gap-2 items-center">
+
+                            <Checkbox className={"border-white"} checked={isFixed} onCheckedChange={() => changeLayout({ isFixed: !isFixed })} />
+                            <label>
+                                Fixed
+                            </label>
+                        </div>
+                        <div className="flex gap-2 items-center">
+                            <Checkbox
+                                className={"border-white"}
+                                checked={isClipEnabled}
+                                onCheckedChange={() => changeLayout({ isClipEnabled: !isClipEnabled })}
+                            />
+                            <label>
+                                Clipped
+                            </label>
+                        </div>
                     </div>
                 </div>
-                <div className="flex justify-end ">
-                    <Button onClick={toggleSetting}>
+                <div className="flex justify-end">
+                    <Button onClick={toggleSetting} variant={"secondary"}>
                         Done
                     </Button>
                 </div>

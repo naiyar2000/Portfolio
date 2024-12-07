@@ -2,10 +2,8 @@ import { create } from "zustand";
 import { devtools } from 'zustand/middleware'
 
 export type CanvaPatternType = "matrix-rain" |
-    "matrix-rain-clipped" |
     "polka-dot" |
-    "mouse-cloud" |
-    "polka-dot-clipped";
+    "mouse-cloud";
 
 export type LayoutType = "video" |
     "canvas" |
@@ -31,12 +29,12 @@ type AppStore = {
 }
 
 export const useAppStore = create<AppStore>()(devtools((set) => ({
-    layoutType: "canvas",
+    layoutType: "default",
     canvaLayoutState: {
         clipPath: "polygon(0 1%, 100% 0, 100% 38%, 79% 80%, 46% 55%, 18% 38%)",
         pattern: "mouse-cloud",
-        isFixed: false,
-        isClipEnabled: false,
+        isFixed: true,
+        isClipEnabled: true,
     },
     video: "home_video",
     isSettingsOpen: false,

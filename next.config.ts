@@ -5,6 +5,7 @@ const nextConfig = {
   assetPrefix: process.env.NODE_ENV !== "production" ? undefined : "/Portfolio/",
   output: process.env.NODE_ENV !== "production" ? undefined : "export",
   images: {
+    domains: ["drive.google.com"],
     unoptimized: envImageUnoptimize,
     remotePatterns: [
       {

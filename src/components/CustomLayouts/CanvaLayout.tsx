@@ -15,35 +15,37 @@ const CanvaLayout = () => {
 
 
         let cancelToken = { cancel: false, frameId: undefined };
-        if (pattern !== "matrix-rain") {
 
-            const context = canvas.getContext('2d');
-            if (!context) return;
+        const context = canvas.getContext('2d');
+        if (!context) return;
 
-            // Create a cancel token 
-            clearCanvas(canvas, context);
+        // Create a cancel token 
+        clearCanvas(canvas, context);
 
-        }
 
         switch (pattern) {
             case "polka-dot":
-            case "polka-dot-clipped":
                 drawPolkatDot(canvas, cancelToken);
                 break;
             case "matrix-rain":
-            case "matrix-rain-clipped":
                 matrixRain(canvas, cancelToken);
                 break;
             case "mouse-cloud":
-                mouseCloud(canvas);
+                mouseCloud(canvas, cancelToken);
                 break;
             default:
                 drawPolkatDot(canvas, cancelToken);
         }
 
+        const handleResize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
+        window.addEventListener('resize', handleResize);
+
         return () => {
-            if (cancelToken.frameId !== undefined) { cancelAnimationFrame(cancelToken.frameId); }
+            if (cancelToken.frameId !== undefined) {
+                cancelAnimationFrame(cancelToken.frameId);
+            }
             cancelToken.cancel = true;
+            window.removeEventListener('resize', handleResize);
         };
 
     }, [pattern, isClipEnabled, canvasRef]);

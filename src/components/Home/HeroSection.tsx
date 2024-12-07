@@ -6,6 +6,7 @@ import TextComponent from './TextComponent'
 import { Button } from '../ui/button'
 import { RefreshCcw } from 'lucide-react'
 import Image from 'next/image'
+import { prefix } from '@/prefix'
 // import GitHubCalendar from 'react-github-calendar';
 
 
@@ -36,7 +37,7 @@ const HeroSection = () => {
                         width: "300px",
                     }}></div>
                     <Image
-                        src="/images/naiyar.png"
+                        src={`${prefix}/images/naiyar.png`}
                         alt=""
                         height={500}
                         width={500}

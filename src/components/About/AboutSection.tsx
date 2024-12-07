@@ -4,6 +4,7 @@ import TransitionComponent from '../AnimatedComponents/TransitionComponent';
 import ThreeDSection from '../ThreeDSection/ThreeDSection';
 // import { useAboutStore } from '@/store/aboutStore';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import { prefix } from '@/prefix';
 
 const scrollingSection: {
   title: string,
@@ -42,7 +43,7 @@ const AboutSection = () => {
           <div className="w-full">
             <DotLottieReact
             className='w-full'
-              src="/animatedSVG.lottie"
+              src={`${prefix}/animatedSVG.lottie`}
               loop
               autoplay
             />

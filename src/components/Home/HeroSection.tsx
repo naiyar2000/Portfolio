@@ -3,8 +3,8 @@ import React, { useEffect } from 'react'
 import { useHomeStore } from '@/store/homeStore'
 import useAuthStore from '@/store/authStore'
 import TextComponent from './TextComponent'
-import { Button } from '../ui/button'
-import { RefreshCcw } from 'lucide-react'
+// import { Button } from '../ui/button'
+// import { RefreshCcw } from 'lucide-react'
 import Image from 'next/image'
 import { prefix } from '@/prefix'
 // import GitHubCalendar from 'react-github-calendar';
@@ -47,6 +47,7 @@ const HeroSection = () => {
                             height: "auto",
                             width: "300px",
                         }}
+                        priority
                     />
                 </div>
             </div>

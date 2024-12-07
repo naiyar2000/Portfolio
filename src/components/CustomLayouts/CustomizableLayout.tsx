@@ -1,10 +1,13 @@
 "use client";
 import React from 'react'
-import CanvaLayout from './CanvaLayout'
 import { useAppStore } from '@/store/appStore';
-import VideoLayout from './VideoLayout';
-import CanvaLayoutWebGl from './CanvaLayoutWebGl';
 import BlurLayout from './BlurLayout';
+import dynamic from 'next/dynamic';
+
+const VideoLayout = dynamic(() => import('./VideoLayout'));
+const CanvaLayoutWebGl = dynamic(() => import('./CanvaLayoutWebGl'));
+const CanvaLayout = dynamic(() => import('./CanvaLayout'));
+
 
 const CustomizableLayout = () => {
     const layoutType = useAppStore(state => state.layoutType);

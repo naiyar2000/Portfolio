@@ -1,10 +1,13 @@
 "use client";
 import React, { useState } from 'react';
-import { DndContext, useDraggable, DragEndEvent } from '@dnd-kit/core';
+import { DndContext, DragEndEvent } from '@dnd-kit/core';
 import { restrictToParentElement } from '@dnd-kit/modifiers'
-import CustomBox, { CustomBoxProps } from './CustomBox';
+import { CustomBoxProps } from './CustomBox';
 import { useClientMediaQuery } from '@/app/hooks/useClientMediaQuery';
+import dynamic from 'next/dynamic';
 
+const CustomBox = dynamic(() => import('./CustomBox'), { ssr: false });
+const DraggableBox = dynamic(() => import('./DraggableBox'), { ssr: false });
 interface Position {
     id: string;
     x: number;
@@ -12,24 +15,7 @@ interface Position {
     content?: CustomBoxProps;
 }
 
-// Define a Box component that uses the useDraggable hook
-const DraggableBox = ({ id, initialX, initialY, children }: { id: string, initialX: number, initialY: number, children?: React.ReactNode }) => {
-    const { attributes, listeners, setNodeRef, transform } = useDraggable({ id });
 
-    return (
-        <div ref={setNodeRef} style={{
-            transform: transform ? `translate3d(${transform.x}px, ${transform.y}px, 0)` : '',
-            position: 'absolute',
-            top: initialY,
-            left: initialX,
-            display: 'flex',
-            cursor: 'pointer',
-            userSelect: 'none',
-        }} {...attributes} {...listeners}>
-            {children}
-        </div>
-    );
-};
 
 const DraggableBoxes: React.FC = () => {
 
@@ -42,7 +28,8 @@ const DraggableBoxes: React.FC = () => {
             content: {
                 title: "Glowy Blob",
                 description: "An interactive canvas feature with a luminous, color-shifting blob that follows your cursor, creating an enchanting visual trail.",
-                sandboxCode: "j59shq"
+                sandboxCode: "j59shq",
+                imageSrc: "web_cloud.gif"
             }
         },
         {
@@ -52,7 +39,8 @@ const DraggableBoxes: React.FC = () => {
             content: {
                 title: "Polka Dot",
                 description: "An engaging canvas feature where dots move harmoniously in one direction, creating a mesmerizing flow and dynamic visual appeal.",
-                sandboxCode: "7n9529"
+                sandboxCode: "7n9529",
+                imageSrc: "polka_dot.gif"
             }
         },
         {
@@ -62,7 +50,8 @@ const DraggableBoxes: React.FC = () => {
             content: {
                 title: "Fuid Effect",
                 description: "An interactive canvas feature where fluid, flowing visuals respond dynamically to mouse hover, creating a captivating and immersive user experience.",
-                sandboxCode: "x83n8l"
+                sandboxCode: "x83n8l",
+                imageSrc: "fluid_effect.png"
             }
         }
     ]);
@@ -89,8 +78,8 @@ const DraggableBoxes: React.FC = () => {
                 {
                     isMobile ?
                         <div className="flex flex-col gap-4">
-                            {positions.map(({ content }) => (
-                                <CustomBox {...content} />
+                            {positions.map(({ id, content }) => (
+                                <CustomBox key={id} {...content} />
                             ))}
                         </div>
                         : positions.map(({ id, x, y, content }) => (

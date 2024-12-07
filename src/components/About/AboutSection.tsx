@@ -1,7 +1,6 @@
-// "use client";
+"use client";
 import React from 'react';
 import TransitionComponent from '../AnimatedComponents/TransitionComponent';
-import ThreeDSection from '../ThreeDSection/ThreeDSection';
 // import { useAboutStore } from '@/store/aboutStore';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { prefix } from '@/prefix';

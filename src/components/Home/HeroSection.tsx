@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect } from 'react'
-import { useHomeStore } from '@/store/homeStore'
+// import { useHomeStore } from '@/store/homeStore'
 import useAuthStore from '@/store/authStore'
 import TextComponent from './TextComponent'
 // import { Button } from '../ui/button'
@@ -11,7 +11,7 @@ import { prefix } from '@/prefix'
 
 
 const HeroSection = () => {
-    const { homePageData, setHomePageData } = useHomeStore();
+    // const { homePageData, setHomePageData } = useHomeStore();
 
     const { user } = useAuthStore();
 
@@ -20,39 +20,26 @@ const HeroSection = () => {
     }, [user])
 
     return (
-        <div className="relative min-h-screen">
-            <div className="absolute top-40 left-5 md:left-16 z-10 flex">
-                {
-                    !homePageData.loading && <TextComponent />
-                }
-                {/* <Button onClick={setHomePageData}><RefreshCcw /></Button> */}
-
+        <section className="relative min-h-screen flex flex-col justify-center md:flex-row md:items-center md:justify-between md:px-10">
+            <TextComponent />
+            <div className="hidden relative scale-110 flex-1 md:flex md:justify-center">
+                <div className='absolute bottom-0 -z-10' style={{
+                    borderRadius: "82% 18% 44% 56% / 47% 24% 76% 53%",
+                    height: "370px",
+                    background: "#748174",
+                    width: "300px",
+                }}></div>
+                <Image
+                    src={`${prefix}/images/naiyar_2.png`}
+                    alt=""
+                    height={320}
+                    width={300}
+                    // layout='fill'
+                    className="profile-image"
+                    priority
+                />
             </div>
-            <div className="absolute right-1/4 top-36 portfolio-image md:block hidden z-40">
-                <div className="relative scale-110">
-                    <div className='absolute bottom-0 -z-10' style={{
-                        borderRadius: "82% 18% 44% 56% / 47% 24% 76% 53%",
-                        height: "370px",
-                        background: "#748174",
-                        width: "300px",
-                    }}></div>
-                    <Image
-                        src={`${prefix}/images/naiyar.png`}
-                        alt=""
-                        height={500}
-                        width={500}
-                        className=""
-                        style={{
-                            borderRadius: "0% 18% 44% 56% / 47% 24% 76% 53%",
-                            height: "auto",
-                            width: "300px",
-                        }}
-                        priority
-                    />
-                </div>
-            </div>
-
-        </div >
+        </section>
     )
 }
 

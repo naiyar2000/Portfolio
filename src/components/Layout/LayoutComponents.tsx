@@ -9,8 +9,8 @@ const LayoutComponents = () => {
 
     return (
         <>
-            {/* <SettingsComponent /> */}
-            {/* <CustomizableLayout /> */}
+            {/* <SettingsComponent />
+            <CustomizableLayout /> */}
             <BlurLayout />
             <Header />
         </>

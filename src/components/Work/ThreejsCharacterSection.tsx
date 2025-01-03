@@ -1,8 +1,11 @@
 "use client";
 import React from 'react'
-import ThreeDSection from '../ThreeDSection/ThreeDSection'
+// import ThreeDSection from '../ThreeDSection/ThreeDSection'
+import dynamic from 'next/dynamic';
 
-const SkillSection = () => {
+const ThreeDSection = dynamic(() => import("../ThreeDSection/ThreeDSection"), { ssr: false })
+
+const ThreejsCharacterSection = () => {
     return (
         <div className="flex flex-col md:flex-row w-full md:h-auto h-screen overflow-visible px-4 md:px-10 py-8 md:py-24 gap-2 items-stretch">
             <div className="animate-character-section w-full md:w-1/3 min-h-full  rounded-md">
@@ -68,4 +71,4 @@ const SkillSection = () => {
     )
 }
 
-export default SkillSection
+export default ThreejsCharacterSection

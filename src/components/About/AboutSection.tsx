@@ -31,17 +31,13 @@ const AboutSection = () => {
   // }, [])
 
   return (
-    <div className="relative w-full flex flex-col gap-6 py-8 md:flex-row text-slate-200">
+    <section className="relative w-full flex flex-col gap-6 md:flex-row text-slate-200">
       <div className="flex flex-col justify-center items-center md:sticky top-20 h-screen flex-1">
-        <div className="flex flex-col h-3/4 gap-1 items-center">
-          <h1 className="text-3xl md:text-5xl font-bold">{"Welcome to My Portfolio"}</h1>
-          {/* <ThreeDSection
-            isAvatar={true}
-            isControlEnabled={false}
-            initialPosition={[0, -6, 3, 3.8]} /> */}
+        <div className="flex flex-col items-center gap-16 justify-between">
+          <h1 className="text-2xl md:text-5xl font-bold">{"Welcome to My Portfolio"}</h1>
           <div className="w-full">
             <DotLottieReact
-            className='w-full'
+              className='w-full'
               src={`${prefix}/animatedSVG.lottie`}
               loop
               autoplay
@@ -52,7 +48,7 @@ const AboutSection = () => {
       <div className="flex-1 flex justify-center font-bold">
         {
           // !loading && 
-          <div className="px-5 md:w-3/4 flex flex-col gap-24 md:py-24 justify-center items-center">
+          <div className="md:w-3/4 flex flex-col gap-24 md:py-24 justify-center items-center">
             {
               scrollingSection?.map((item) => {
                 return <TransitionComponent key={item.title} transitionProps={{ transitionType: 'down-to-top', threshold: 0.2 }}>
@@ -60,7 +56,6 @@ const AboutSection = () => {
                     <div className="animated-bar"></div>
                     <div className="flex flex-col gap-6 md:w-full">
                       <h1 className="text-2xl md:text-4xl">{item.title}</h1>
-                      {/* <h1 className="text-lg md:text-lg text-slate-400">{item.description}</h1> */}
                       <h1 className="text-lg md:text-lg text-slate-400">{item.desc}</h1>
                     </div>
                   </div>
@@ -71,7 +66,7 @@ const AboutSection = () => {
           </div>
         }
       </div>
-    </div>
+    </section>
   );
 };
 

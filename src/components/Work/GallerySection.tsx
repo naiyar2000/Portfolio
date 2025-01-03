@@ -2,11 +2,10 @@
 import React, { useState } from 'react';
 import { DndContext, DragEndEvent } from '@dnd-kit/core';
 import { restrictToParentElement } from '@dnd-kit/modifiers'
-import { CustomBoxProps } from './CustomBox';
+import CustomBox, { CustomBoxProps } from './CustomBox';
 import { useClientMediaQuery } from '@/app/hooks/useClientMediaQuery';
 import dynamic from 'next/dynamic';
 
-const CustomBox = dynamic(() => import('./CustomBox'), { ssr: false });
 const DraggableBox = dynamic(() => import('./DraggableBox'), { ssr: false });
 interface Position {
     id: string;
@@ -17,7 +16,7 @@ interface Position {
 
 
 
-const DraggableBoxes: React.FC = () => {
+const GallerySection: React.FC = () => {
 
 
     const [positions, setPositions] = useState<Position[]>([
@@ -72,25 +71,29 @@ const DraggableBoxes: React.FC = () => {
 
 
     return (
-        <DndContext modifiers={[restrictToParentElement]} onDragEnd={handleDragEnd}>
-            <div className="md:h-screen w-full relative px-3 md:px-16">
-                <span className="text-white text-4xl font-bold">{"Gallery"}</span>
-                {
-                    isMobile ?
-                        <div className="flex flex-col gap-4">
-                            {positions.map(({ id, content }) => (
-                                <CustomBox key={id} {...content} />
-                            ))}
-                        </div>
-                        : positions.map(({ id, x, y, content }) => (
-                            <DraggableBox key={id} id={id} initialX={x} initialY={y}>
-                                <CustomBox {...content} />
-                            </DraggableBox>
-                        ))
-                }
-            </div>
-        </DndContext>
+        <section className=''>
+            <DndContext modifiers={[restrictToParentElement]} onDragEnd={handleDragEnd}>
+                <div className="md:h-screen w-full md:relative">
+                    <div className="mb-4">
+                        <span className="text-white text-4xl font-bold">{"Gallery"}</span>
+                    </div>
+                    {
+                        isMobile ?
+                            <div className="flex flex-col gap-4">
+                                {positions.map(({ id, content }) => (
+                                    <CustomBox key={id} {...content} />
+                                ))}
+                            </div>
+                            : positions.map(({ id, x, y, content }) => (
+                                <DraggableBox key={id} id={id} initialX={x} initialY={y}>
+                                    <CustomBox {...content} />
+                                </DraggableBox>
+                            ))
+                    }
+                </div>
+            </DndContext>
+        </section>
     );
 };
 
-export default DraggableBoxes;
+export default GallerySection;

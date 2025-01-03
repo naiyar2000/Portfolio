@@ -1,22 +1,26 @@
+"use client";
 // import dynamic from 'next/dynamic';
 import AboutSection from "@/components/About/AboutSection";
+import ExperienceSection from "@/components/Experience/ExperienceSection";
+// import ExperienceSection2 from "@/components/Experience/ExperienceSection2";
+// import ExperienceSection3 from "@/components/Experience/ExperienceSection3";
 import HeroSection from "@/components/Home/HeroSection";
-import CodeSandboxSection from "@/components/Work/CodeSandboxSection";
-import SkillSection from "@/components/Work/SkillSection";
-
-// const HeroSection = dynamic(() => import('@/components/Home/HeroSection'));
-// const AboutSection = dynamic(() => import('@/components/About/AboutSection'));
-// const CodeSandboxSection = dynamic(() => import('@/components/Work/CodeSandboxSection'), { ssr: false });
-// const SkillSection = dynamic(() => import('@/components/Work/SkillSection'), { ssr: false });
+import GallerySection from "@/components/Work/GallerySection";
+import WorkSection from "@/components/Work/WorkSection";
 
 
 export default function Home() {
   return (
-    <div>
+    <>
       <HeroSection />
       <AboutSection />
-      <CodeSandboxSection />
-      <SkillSection />
-    </div>
+      <WorkSection />
+      <ExperienceSection />
+      {/* <ExperienceSection2 /> */}
+      {/* <ExperienceSection3 /> */}
+      <GallerySection />
+      {/* <SkillSection /> */}
+    </>
   );
 }
+

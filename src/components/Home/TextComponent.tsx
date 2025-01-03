@@ -1,7 +1,6 @@
 
 "use client"
 import React, { useEffect, useState } from 'react'
-import TransitionComponent from '../AnimatedComponents/TransitionComponent'
 import { HomepageData, useHomeStore } from '@/store/homeStore';
 import { prefix } from '@/prefix';
 import useAuthStore from '@/store/authStore';
@@ -53,23 +52,17 @@ const TextComponent = () => {
             } */}
             {editMode ? <input onChange={(e) => handleEditStateChange({ key: "header", value: e.target.value })} className="text-lg font-bold md:text-xl md:font-medium text-black" value={editState.header} />
                 : <HackerText className="text-xl font-bold md:text-4xl md:font-bold" text={homePageData?.header} />}
-            <TransitionComponent transitionProps={{ transitionType: "left-to-right" }}>
-                {editMode ? <input onChange={(e) => handleEditStateChange({ key: "title", value: e.target.value })} className="text-lg font-bold md:text-xl md:font-medium text-black" value={editState.title} /> :
-                    <h1 className="font-medium w-full text-2xl md:text-4xl pr-4">{homePageData?.title}</h1>}
-            </TransitionComponent>
+            {editMode ? <input onChange={(e) => handleEditStateChange({ key: "title", value: e.target.value })} className="text-lg font-bold md:text-xl md:font-medium text-black" value={editState.title} /> :
+                <h1 className="font-medium w-full text-2xl md:text-4xl pr-4">{homePageData?.title}</h1>}
             <div className="pr-16 flex flex-col gap-16 md:gap-10 items-start">
-                <TransitionComponent transitionProps={{ transitionType: "right-to-left" }}>
-                    {editMode ? <input onChange={(e) => handleEditStateChange({ key: "subTitle", value: e.target.value })} className="font-semibold text-2xl leading-6 md:text-xl md:font-medium text-black" value={editState.subTitle} /> :
-                        <h2 className="font-semibold text-xl leading-6">
-                            {homePageData?.subTitle}
-                        </h2>
-                    }
-                </TransitionComponent>
-                <TransitionComponent transitionProps={{ transitionType: "down-to-top" }}>
-                    <a href={`${prefix}/pdf/Naiyar_resume.pdf`} download="Naiyar_Imam" className="neon-button no-underline text-lg">
-                        {"DOWNLOAD CV"}
-                    </a>
-                </TransitionComponent>
+                {editMode ? <input onChange={(e) => handleEditStateChange({ key: "subTitle", value: e.target.value })} className="font-semibold text-2xl leading-6 md:text-xl md:font-medium text-black" value={editState.subTitle} /> :
+                    <h2 className="font-semibold text-xl leading-6">
+                        {homePageData?.subTitle}
+                    </h2>
+                }
+                <a href={`${prefix}/pdf/Naiyar_resume.pdf`} download="Naiyar_Imam" className="cv-button neon-button no-underline text-lg">
+                    {"DOWNLOAD CV"}
+                </a>
             </div>
         </div>
     )

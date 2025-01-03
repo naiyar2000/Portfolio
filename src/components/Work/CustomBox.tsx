@@ -18,7 +18,7 @@ const CustomBox = ({
 }: CustomBoxProps) => {
 
     return (
-        <div className="max-w-sm mx-auto bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg shadow-lg rounded-lg overflow-hidden p-4">
+        <div className="max-w-sm mx-auto bg-glass-card">
             <div className="">
                 <Image
                     width={352}

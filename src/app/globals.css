@@ -16,11 +16,11 @@ body {
   from {
     rotate: 0deg;
   }
-  
+
   50% {
     scale: 1 1.5;
   }
-  
+
   to {
     rotate: 360deg;
   }
@@ -48,6 +48,9 @@ body {
   z-index: 0;
   backdrop-filter: blur(75px);
 }
+
+/* Updated Card Background */
+
 
 .neon-button {
   display: inline-block;
@@ -108,6 +111,27 @@ body {
 .neon-button:hover::after,
 .neon-button:focus::after {
   opacity: 1;
+}
+
+.cv-button {
+  opacity: 0;
+  animation: fade-in-top 0.5s ease-in forwards;
+}
+
+@keyframes fade-in-top {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.profile-image {
+  border-radius: 0% 18% 44% 56% / 47% 24% 76% 53%;
 }
 
 
@@ -187,6 +211,16 @@ body {
     -webkit-backdrop-filter: blur(3.5px);
     border-radius: 10px;
   }
+
+  .bg-glass-card {
+    @apply rounded-lg bg-[rgba(255,255,255,0.1)] backdrop-blur-sm border border-[rgba(255,255,255,0.2)] shadow-lg p-4 hover:bg-opacity-80 transition-all duration-300 hover:scale-[1.03] hover:border-blue-500;
+    background: rgba(255, 255, 255, 0.1); /* Light translucent white */
+    backdrop-filter: blur(10px);  /* Apply blur to the background */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border for better definition */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  }
+
+  
 
 
   @keyframes animated-bar-animation {

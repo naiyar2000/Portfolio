@@ -1,0 +1,57 @@
+.card-carousel {
+  transform-style: preserve-3d;
+  transform: perspective(1800px);
+  transition: transform 0.3s ease-out;
+}
+
+
+@media screen and (max-width: 768px) {
+  .card-carousel {
+    transform: perspective(700px);
+  }
+
+}
+
+.highlighted-card {
+  opacity: 1 !important;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition: opacity 1s ease-out;
+  /* Ensure transitions are set for transform */
+}
+
+.progress-bar {
+  height: 5px;
+  background-color: rgba(97, 112, 118, 0.289);
+  border-radius: 2px;
+  margin-top: 10px;
+}
+
+.individual-card {
+  background-color: #0321129c;
+  box-shadow: 12px 12px 18px rgba(0, 0, 0, 0.3), inset -12px -12px 18px rgba(0, 0, 0, 0.3), inset 12px 12px 18px rgb(68 72 67 / 54%);
+}
+
+.wave-div {
+  clip-path: polygon(0% 10%, 100% 10%, 100% 100%, 0% 100%);
+  animation: waveAnimation 10s ease-in-out infinite;
+}
+
+/* Keyframe animation for wave effect */
+@keyframes waveAnimation {
+  0%, 100% {
+    clip-path: polygon(0% 10%, 25% 12%, 50% 10%, 75% 12%, 100% 10%, 100% 100%, 0% 100%);
+  }
+  20% {
+    clip-path: polygon(0% 12%, 25% 14%, 50% 12%, 75% 14%, 100% 12%, 100% 100%, 0% 100%);
+  }
+  40% {
+    clip-path: polygon(0% 14%, 25% 16%, 50% 14%, 75% 16%, 100% 14%, 100% 100%, 0% 100%);
+  }
+  60% {
+    clip-path: polygon(0% 12%, 25% 14%, 50% 12%, 75% 14%, 100% 12%, 100% 100%, 0% 100%);
+  }
+  80% {
+    clip-path: polygon(0% 10%, 25% 12%, 50% 10%, 75% 12%, 100% 10%, 100% 100%, 0% 100%);
+  }
+}
+

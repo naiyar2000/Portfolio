@@ -24,7 +24,7 @@ export const SettingsComponent = () => {
 
     return <div className="fixed top-20 right-20 z-50">
         <Dialog open={isSettingsOpen} onOpenChange={(open) => { if (!open) toggleSetting(); }}>
-            <DialogTrigger asChild className={`${user ? "block" : "hidden"}`}>
+            <DialogTrigger asChild className={`${!user ? "block" : "hidden"}`}>
                 <Button onClick={toggleSetting} className='bg-black opacity-65 rounded-sm backdrop-blur-md text-white text-sm px-2 py-1'>
                     <Layout />
                 </Button>

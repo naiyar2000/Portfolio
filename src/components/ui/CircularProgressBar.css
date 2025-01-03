@@ -1,0 +1,20 @@
+.circular-progress-bar {
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  /* Default size */
+  height: 100px;
+  /* Default size */
+}
+
+.circular-progress-bar svg {
+  transform: rotate(-90deg);
+  /* Rotate to start at the top */
+}
+
+.circular-progress-bar .percentage-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

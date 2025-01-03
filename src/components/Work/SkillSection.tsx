@@ -1,12 +1,16 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import "./work.css"
+import "./skills.css"
 import { useClientMediaQuery } from "@/app/hooks/useClientMediaQuery";
 import Image from "next/image";
 import { prefix } from "@/prefix";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { Github } from "lucide-react";
+import CircularProgressBar from "../ui/circularProgressBar";
+import { scrollingSection } from "../About/AboutSection";
+import TransitionComponent from "../AnimatedComponents/TransitionComponent";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 const skillData: {
     label: string;
@@ -115,80 +119,121 @@ const SkillSection: React.FC = () => {
 
 
     return (
-        <section id="skills" ref={sectionRef} className="relative h-[500vh]">
-            <div
-                className="sticky top-0 h-screen flex items-center justify-center w-full"
-            >
+        <section id="skills" ref={sectionRef} className="relative h-[500vh] text-slate-200">
+            <div className="sticky top-20 flex flex-row md:flex-row">
                 <div
-                    ref={carouselRef}
-                    className="relative flex items-center justify-center w-80 h-96 card-carousel"
-
+                    className="sticky top-20 h-screen flex items-start justify-center flex-1"
                 >
-                    {skillData.map((data, index) => (
-                        <div
-                            key={index}
-                            className={`individual-card absolute w-24 h-64 md:w-48 md:h-64 flex items-center justify-center left-1000 text-white shadow-lg rounded-lg ${isCenterCard(index) ? 'highlighted-card' : ''}`}
-                            style={{
-                                transform: `rotateY(${getCardRotation(index)}deg) translateZ(${isMobile ? 180 : 400}px) `,
-                                backfaceVisibility: "hidden",
-                                opacity: 0.1,
-                            }}
-                        >
-                            <div className="relative h-full flex flex-col items-center justify-center">
-                                <div className="w-full h-full -z-10 absolute rounded-lg">
-                                    <div className="relative h-full w-full rounded-lg">
-                                        <div
-                                            className="wave-div absolute bottom-0 left-0 rounded-lg"
-                                            style={{
-                                                height: `${data.progress}%`,
-                                                width: "100%",
-                                                background: "rgb(91 125 116 / 53%)",
-                                                overflow: "hidden",
-                                                transition: "width 1s ease-in-out", // Smooth animation for fluid fill
-                                            }}
-                                        ></div>
-                                    </div>
-                                </div>
-                                <div className="p-1 flex flex-col items-center justify-center gap-2">
-                                    <Image
-                                        src={`${prefix}/images/${data.logo}.png`}
-                                        alt={data.logo}
-                                        height={500}
-                                        width={500}
-                                        style={{
-                                            height: "35px",
-                                            width: "35px"
-                                        }}
-                                    />
-                                    <div className="flex flex-col items-center justify-center gap-5">
+                    <div className="absolute inset-0">
+                        <div className="flex flex-col justify-start items-center md:sticky top-0 h-screen flex-1">
+                            <div className="flex flex-col  items-center gap-16 justify-between">
+                                <h1 className="text-2xl md:text-5xl font-bold">{"Welcome to My Portfolio"}</h1>
+                                <DotLottieReact
+                                    className=''
+                                    src={`${prefix}/animatedSVG.lottie`}
+                                    loop
+                                    autoplay
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        ref={carouselRef}
+                        className="relative flex items-center justify-center w-80 h-96 card-carousel"
 
-                                        <h3
-                                            className="font-bold text-xs md:text-sm text-center"
-                                        >{data.label}</h3>
-                                        <p
-                                            className="text-xs text-center"
-                                        >
-                                            {data.description}
-                                        </p>
-                                        {
-                                            data.demoRoute && <Link href="/threejs-character">
-                                                <Button size={"sm"}>View Demo</Button>
-                                            </Link>
-                                        }
-                                        {
-                                            data.githubLink && <a href={data.githubLink} target="_blank"><Button size={"sm"} className="project-link p-2 text-xs">
-                                                <div className="flex items-center justify-center gap-1">
-                                                    <Github />
-                                                    <p>View Code</p>
-                                                </div>
-                                            </Button>
-                                            </a>
-                                        }
+                    >
+                        {skillData.map((data, index) => (
+                            <div
+                                key={index}
+                                className={`individual-card absolute w-36 h-64 md:w-48 md:h-64 flex items-center justify-center left-1000 text-white shadow-lg rounded-lg ${isCenterCard(index) ? 'highlighted-card' : ''}`}
+                                style={{
+                                    transform: `rotateX(-10deg) rotateY(${getCardRotation(index)}deg) translateZ(${isMobile ? 180 : 400}px) translateY(100px)`,
+                                    // backfaceVisibility: "hidden",
+                                    opacity: 0.1,
+                                }}
+                            >
+                                <div className="relative h-full flex flex-col items-center justify-center">
+                                    <div className="w-full h-full -z-50 absolute rounded-lg">
+                                        <div className="relative h-full w-full rounded-lg">
+                                            <div
+                                                className="wave-div absolute bottom-0 left-0 rounded-lg"
+                                                style={{
+                                                    height: `${data.progress}%`,
+                                                    width: "100%",
+                                                    background: "rgb(91 125 116 / 53%)",
+                                                    overflow: "hidden",
+                                                    transition: "width 1s ease-in-out", // Smooth animation for fluid fill
+                                                }}
+                                            ></div>
+                                        </div>
+                                    </div>
+                                    <div className="p-1 h-full flex flex-col items-center justify-center gap-2">
+                                        <div className="absolute skill-icon -top-4 overflow-hidden">
+                                            <Image
+                                                src={`${prefix}/images/${data.logo}.png`}
+                                                alt={data.logo}
+                                                height={500}
+                                                width={500}
+                                                style={{
+                                                    height: "35px",
+                                                    width: "35px"
+                                                }}
+                                            />
+                                        </div>
+                                        <div className="flex h-full flex-col items-center justify-between">
+                                            <div className="flex flex-col items-center justify-center gap-5 pt-10">
+                                                <h3
+                                                    className="font-bold text-xs md:text-sm text-center"
+                                                >{data.label}</h3>
+                                                <p
+                                                    className="text-xs text-center"
+                                                >
+                                                    {data.description}
+                                                </p>
+                                                <CircularProgressBar color="#032112" labelClassName="text-[12px]" size={45} strokeWidth={4} percentage={data.progress} />
+                                            </div>
+                                            <div>
+                                                {
+                                                    data.demoRoute && <Link href="/threejs-character">
+                                                        <Button size={"sm"}>View Demo</Button>
+                                                    </Link>
+                                                }
+                                                {
+                                                    data.githubLink && <a href={data.githubLink} target="_blank"><Button size={"sm"} className="project-link p-2 text-xs">
+                                                        <div className="flex items-center justify-center gap-1">
+                                                            <Github />
+                                                            <p>View Code</p>
+                                                        </div>
+                                                    </Button>
+                                                    </a>
+                                                }
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                        ))}
+                    </div>
+                </div >
+                <div className="hidden flex-1 md:flex justify-center font-bold">
+                    {
+                        <div className="md:w-3/4 flex flex-col gap-24 md:py-24 justify-center items-center">
+                            {
+                                scrollingSection?.map((item) => {
+                                    return <TransitionComponent key={item.title} transitionProps={{ transitionType: 'down-to-top', threshold: 0.2 }}>
+                                        <div className={`relative flex flex-col box-content justify-start w-full border-t-2 border-t-slate-300 pt-2 md:pt-6 md:min-h-72`}>
+                                            <div className="animated-bar"></div>
+                                            <div className="flex flex-col gap-6 md:w-full">
+                                                <h1 className="text-2xl md:text-4xl">{item.title}</h1>
+                                                <h1 className="text-lg md:text-lg text-slate-400">{item.desc}</h1>
+                                            </div>
+                                        </div>
+                                    </TransitionComponent>
+                                }
+                                )
+                            }
                         </div>
-                    ))}
+                    }
                 </div>
             </div >
         </section >

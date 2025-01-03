@@ -3,8 +3,9 @@ import React from 'react';
 import TransitionComponent from '../AnimatedComponents/TransitionComponent';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { prefix } from '@/prefix';
+import SkillSection from '../Work/SkillSection';
 
-const scrollingSection: {
+export const scrollingSection: {
   title: string,
   desc: string,
 }[] = [

@@ -31,7 +31,7 @@
 }
 
 .individual-card {
-  background-color: #0321129c;
+  background-color: #032112f7;
   box-shadow: 12px 12px 18px rgba(0, 0, 0, 0.3), inset -12px -12px 18px rgba(0, 0, 0, 0.3), inset 12px 12px 18px rgb(68 72 67 / 54%);
 }
 
@@ -59,3 +59,11 @@
   }
 }
 
+.skill-icon {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}

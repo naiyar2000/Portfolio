@@ -50,8 +50,9 @@ const TextComponent = () => {
                     {!editMode ? <Edit /> : <Save />}
                 </div>
             } */}
-            {editMode ? <input onChange={(e) => handleEditStateChange({ key: "header", value: e.target.value })} className="text-lg font-bold md:text-xl md:font-medium text-black" value={editState.header} />
-                : <HackerText className="text-xl font-bold md:text-4xl md:font-bold" text={homePageData?.header} />}
+            <HackerText className="text-xl font-bold md:text-4xl md:font-bold" text={homePageData?.header} />
+            {/* {editMode ? <input onChange={(e) => handleEditStateChange({ key: "header", value: e.target.value })} className="text-lg font-bold md:text-xl md:font-medium text-black" value={editState.header} />
+                : <HackerText className="text-xl font-bold md:text-4xl md:font-bold" text={homePageData?.header} />} */}
             {editMode ? <input onChange={(e) => handleEditStateChange({ key: "title", value: e.target.value })} className="text-lg font-bold md:text-xl md:font-medium text-black" value={editState.title} /> :
                 <h1 className="font-medium w-full text-2xl md:text-4xl pr-4">{homePageData?.title}</h1>}
             <div className="pr-16 flex flex-col gap-16 md:gap-10 items-start">

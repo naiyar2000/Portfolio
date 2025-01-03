@@ -91,7 +91,7 @@ const ThreeDSection = ({
             <Canvas ref={containerRef} className='flex h-full w-full items-center justify-center'>
                 <Suspense fallback={null}>
                     <ambientLight intensity={7} />
-                    <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
+                    <spotLight position={[10, 10, 10]} angle={0.1} penumbra={1} />
                     {
                         !isMobile && <OrbitControls enableZoom={false} maxPolarAngle={Math.PI / 2} />
                     }

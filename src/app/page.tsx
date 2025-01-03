@@ -1,12 +1,9 @@
 "use client";
-// import dynamic from 'next/dynamic';
 import AboutSection from "@/components/About/AboutSection";
 import ExperienceSection from "@/components/Experience/ExperienceSection";
-// import ExperienceSection2 from "@/components/Experience/ExperienceSection2";
-// import ExperienceSection3 from "@/components/Experience/ExperienceSection3";
 import HeroSection from "@/components/Home/HeroSection";
 import GallerySection from "@/components/Work/GallerySection";
-import WorkSection from "@/components/Work/WorkSection";
+import SkillSection from "@/components/Work/SkillSection";
 
 
 export default function Home() {
@@ -14,12 +11,9 @@ export default function Home() {
     <>
       <HeroSection />
       <AboutSection />
-      <WorkSection />
+      <SkillSection />
       <ExperienceSection />
-      {/* <ExperienceSection2 /> */}
-      {/* <ExperienceSection3 /> */}
       <GallerySection />
-      {/* <SkillSection /> */}
     </>
   );
 }

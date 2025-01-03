@@ -5,54 +5,67 @@ import { useClientMediaQuery } from "@/app/hooks/useClientMediaQuery";
 import Image from "next/image";
 import { prefix } from "@/prefix";
 import { Button } from "../ui/button";
+import Link from "next/link";
+import { Github } from "lucide-react";
 
-const skillData = [
-    {
-        label: "React",
-        logo: "react",
-        progress: 80,
-        description: "Building dynamic UIs with reusable components and hooks.",
-    },
-    {
-        label: "Node.js",
-        logo: "nodejs",
-        progress: 75,
-        description: "Crafting server-side applications with JavaScript, fast and scalable.",
-    },
-    {
-        label: "MongoDB",
-        logo: "mongodb",
-        progress: 65,
-        description: "NoSQL database for flexible and scalable data storage.",
-    },
-    {
-        label: "Firebase",
-        logo: "firebase",
-        progress: 60,
-        description: "Real-time apps made simple with Firebase’s authentication and cloud services.",
-    },
-    {
-        label: "Kubernetes",
-        logo: "kubernetes",
-        progress: 70,
-        description: "Managing containerized applications with automated deployment and scaling.",
-    },
-    {
-        label: "Tailwind CSS",
-        logo: "tailwind",
-        progress: 85,
-        description: "Utility-first CSS framework for creating custom designs without the hassle.",
-    },
-    {
-        label: "Three.js",
-        logo: "threejs",
-        progress: 65,
-        description: "Creating 3D visualizations and interactive graphics in the browser.",
-    },
-];
+const skillData: {
+    label: string;
+    logo: string;
+    progress: number;
+    description: string;
+    githubLink?: string;
+    demoRoute?: string;
+}[] = [
+        {
+            label: "React",
+            logo: "react",
+            progress: 80,
+            description: "Building dynamic UIs with reusable components and hooks.",
+            githubLink: "https://github.com/naiyar2000?tab=repositories&q=&type=&language=typescript"
+        },
+        {
+            label: "Node.js",
+            logo: "nodejs",
+            progress: 75,
+            description: "Crafting server-side applications with JavaScript, fast and scalable.",
+            githubLink: "https://github.com/naiyar2000?tab=repositories&q=&type=&language=javascript"
+        },
+        {
+            label: "MongoDB",
+            logo: "mongodb",
+            progress: 65,
+            description: "NoSQL database for flexible and scalable data storage.",
+        },
+        {
+            label: "Firebase",
+            logo: "firebase",
+            progress: 60,
+            description: "Real-time apps made simple with Firebase’s authentication and cloud services.",
+            githubLink: "https://github.com/naiyar2000?tab=repositories&q=&type=&language=dart"
+        },
+        {
+            label: "Kubernetes",
+            logo: "kubernetes",
+            progress: 70,
+            description: "Managing containerized applications with automated deployment and scaling.",
+        },
+        {
+            label: "Tailwind CSS",
+            logo: "tailwind",
+            progress: 85,
+            description: "Utility-first CSS framework for creating custom designs without the hassle.",
+        },
+        {
+            label: "Three.js",
+            logo: "threejs",
+            progress: 65,
+            description: "Creating 3D visualizations and interactive graphics in the browser.",
+            demoRoute: "/threejs-character"
+        },
+    ];
 
 
-const WorkSection: React.FC = () => {
+const SkillSection: React.FC = () => {
     const sectionRef = useRef<HTMLElement>(null);
     const carouselRef = useRef<HTMLDivElement>(null);
     const isMobile = useClientMediaQuery('(max-width: 600px)')
@@ -92,7 +105,7 @@ const WorkSection: React.FC = () => {
                 const progress = Math.max(0, Math.min(1, (viewportHeight - top) / height));
                 const rotation = progress * 360; // Full rotation as user scrolls through section
                 // carousel.style.transform = `rotateY(${rotation}deg)`;
-                setRotationState(rotation);
+                setRotationState(-1 * rotation);
             }
         };
 
@@ -102,7 +115,7 @@ const WorkSection: React.FC = () => {
 
 
     return (
-        <section ref={sectionRef} className="relative h-[500vh]">
+        <section id="skills" ref={sectionRef} className="relative h-[500vh]">
             <div
                 className="sticky top-0 h-screen flex items-center justify-center w-full"
             >
@@ -153,11 +166,24 @@ const WorkSection: React.FC = () => {
                                             className="font-bold text-xs md:text-sm text-center"
                                         >{data.label}</h3>
                                         <p
-                                            className="font-light text-xs md:text-xs text-center"
+                                            className="text-xs text-center"
                                         >
                                             {data.description}
                                         </p>
-                                        <Button size={"sm"} className="project-link">View Projects</Button>
+                                        {
+                                            data.demoRoute && <Link href="/threejs-character">
+                                                <Button size={"sm"}>View Demo</Button>
+                                            </Link>
+                                        }
+                                        {
+                                            data.githubLink && <a href={data.githubLink} target="_blank"><Button size={"sm"} className="project-link p-2 text-xs">
+                                                <div className="flex items-center justify-center gap-1">
+                                                    <Github />
+                                                    <p>View Code</p>
+                                                </div>
+                                            </Button>
+                                            </a>
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -169,4 +195,4 @@ const WorkSection: React.FC = () => {
     );
 };
 
-export default WorkSection;
+export default SkillSection;

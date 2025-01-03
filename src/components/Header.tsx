@@ -51,8 +51,8 @@ const Header = () => {
                     </Link>
                 </div>
                 <div className="hidden md:flex gap-4 items-center">
-                    <Link href={"/"}>About</Link>
-                    <Link href={"/"}>Skills</Link>
+                    <Link href={"#about"}>About</Link>
+                    <Link href={"#skills"}>Skills</Link>
                     {/* <Button onClick={() => user ? handleLogout() : handleLogin()}>{user ? "LogOut" : "LogIn"}</Button> */}
                 </div>
                 <div className="md:hidden">

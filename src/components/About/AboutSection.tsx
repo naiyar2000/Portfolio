@@ -1,7 +1,6 @@
 "use client";
 import React from 'react';
 import TransitionComponent from '../AnimatedComponents/TransitionComponent';
-// import { useAboutStore } from '@/store/aboutStore';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { prefix } from '@/prefix';
 
@@ -25,13 +24,9 @@ const scrollingSection: {
 
 const AboutSection = () => {
 
-  // const { aboutPageData, loading, setAboutPageData } = useAboutStore();
-  // useEffect(() => {
-  //   setAboutPageData()
-  // }, [])
 
   return (
-    <section className="relative w-full flex flex-col gap-6 md:flex-row text-slate-200">
+    <section id='about' className="relative w-full flex flex-col gap-6 md:flex-row text-slate-200">
       <div className="flex flex-col justify-center items-center md:sticky top-20 h-screen flex-1">
         <div className="flex flex-col items-center gap-16 justify-between">
           <h1 className="text-2xl md:text-5xl font-bold">{"Welcome to My Portfolio"}</h1>
@@ -47,7 +42,6 @@ const AboutSection = () => {
       </div>
       <div className="flex-1 flex justify-center font-bold">
         {
-          // !loading && 
           <div className="md:w-3/4 flex flex-col gap-24 md:py-24 justify-center items-center">
             {
               scrollingSection?.map((item) => {

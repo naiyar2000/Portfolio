@@ -18,6 +18,10 @@
   transition: opacity 1s ease-out;
   /* Ensure transitions are set for transform */
 }
+.highlighted-card:hover {
+  scale: 1.1;
+  transition: scale 0.3s ease-in;
+}
 
 .progress-bar {
   height: 5px;

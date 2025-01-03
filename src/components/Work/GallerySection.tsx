@@ -50,7 +50,7 @@ const GallerySection: React.FC = () => {
                 title: "Fuid Effect",
                 description: "An interactive canvas feature where fluid, flowing visuals respond dynamically to mouse hover, creating a captivating and immersive user experience.",
                 sandboxCode: "x83n8l",
-                imageSrc: "fluid_effect.png"
+                imageSrc: "mousecloud.gif"
             }
         }
     ]);

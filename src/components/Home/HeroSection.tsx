@@ -7,7 +7,7 @@ import TextComponent from './TextComponent'
 // import { RefreshCcw } from 'lucide-react'
 import Image from 'next/image'
 import { prefix } from '@/prefix'
-// import GitHubCalendar from 'react-github-calendar';
+import GitHubCalendar from 'react-github-calendar';
 
 
 const HeroSection = () => {

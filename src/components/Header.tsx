@@ -61,6 +61,7 @@ const Header = () => {
                     <div className="hidden md:flex gap-4 items-center">
                         <Link href={"#about"}>About</Link>
                         <Link href={"#skills"}>Skills</Link>
+                        <Link href={"#gallery"}>Gallery</Link>
                         {/* <Button onClick={() => user ? handleLogout() : handleLogin()}>{user ? "LogOut" : "LogIn"}</Button> */}
                     </div>
                     {
@@ -76,7 +77,7 @@ const Header = () => {
                                 }
                             </div>
                             :
-                            <Link href={`${prefix}/`} className="md:hidden" >
+                            <Link href={`/`} className="md:hidden" >
                                 <Home size={"35px"} />
                             </Link>
                     }
@@ -95,7 +96,7 @@ const Header = () => {
                         </Link>
                         <Link href={`#gallery`} className="flex items-center gap-2 bg-slate-200 rounded-md p-2">
                             <Code className="w-4 h-4" />
-                            Projects
+                            Gallery
                         </Link>
                     </div>
                 </div> : <div className={`${scrollPosition > 0 ? "block" : "hidden"} fixed bottom-8 right-4 z-50`}>

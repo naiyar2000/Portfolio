@@ -101,39 +101,39 @@ const SkillSection: React.FC = () => {
     };
     const lastTouchX = useRef(0); // Store the last touch position to calculate delta
 
+    const handleScroll = () => {
+        const section = sectionRef.current;
+        const carousel = carouselRef.current;
 
+        if (!section || !carousel) return;
+
+        const { top, height } = section.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        const threshold = 0.8 * viewportHeight; // Start rotation when the section is 20% into the viewport
+
+        // Check if the section is within the viewport and past the threshold
+        if (top <= viewportHeight && top + height >= 0 && top <= viewportHeight - threshold) {
+            const progress = Math.max(0, Math.min(1, (viewportHeight - top - threshold) / (height - threshold)));
+            const rotation = progress * 360; // Full rotation as user scrolls past the threshold
+            setRotationState(-1 * rotation);
+        }
+    };
+    const handleHorizontalScroll = (e: WheelEvent) => {
+        // Convert the horizontal scroll (deltaX) to vertical scroll (deltaY)
+        window.scrollBy(0, e.deltaX); // Scroll vertically using horizontal scroll amount
+    };
+    const handleTouchMove = (e: TouchEvent) => {
+        const currentTouchX = e.touches[0].clientX; // Get the current horizontal touch position
+        const touchDelta = currentTouchX - lastTouchX.current; // Calculate the horizontal movement difference
+
+        const scrollAmount = touchDelta * 2; // Slow down the scroll by adjusting the multiplier (0.1)
+
+        window.scrollBy(0, touchDelta < 0 ? 36 : -36); // Scroll vertically based on horizontal touch movement
+
+        lastTouchX.current = currentTouchX; // Update lastTouchX for the next touchmove
+    };
     useEffect(() => {
-        const handleScroll = () => {
-            const section = sectionRef.current;
-            const carousel = carouselRef.current;
 
-            if (!section || !carousel) return;
-
-            const { top, height } = section.getBoundingClientRect();
-            const viewportHeight = window.innerHeight;
-            const threshold = 0.8 * viewportHeight; // Start rotation when the section is 20% into the viewport
-
-            // Check if the section is within the viewport and past the threshold
-            if (top <= viewportHeight && top + height >= 0 && top <= viewportHeight - threshold) {
-                const progress = Math.max(0, Math.min(1, (viewportHeight - top - threshold) / (height - threshold)));
-                const rotation = progress * 360; // Full rotation as user scrolls past the threshold
-                setRotationState(-1 * rotation);
-            }
-        };
-        const handleHorizontalScroll = (e: WheelEvent) => {
-            // Convert the horizontal scroll (deltaX) to vertical scroll (deltaY)
-            window.scrollBy(0, e.deltaX); // Scroll vertically using horizontal scroll amount
-        };
-        const handleTouchMove = (e: TouchEvent) => {
-            const currentTouchX = e.touches[0].clientX; // Get the current horizontal touch position
-            const touchDelta = currentTouchX - lastTouchX.current; // Calculate the horizontal movement difference
-
-            const scrollAmount = touchDelta * 2; // Slow down the scroll by adjusting the multiplier (0.1)
-
-            window.scrollBy(0, touchDelta < 0 ? 36 : -36); // Scroll vertically based on horizontal touch movement
-
-            lastTouchX.current = currentTouchX; // Update lastTouchX for the next touchmove
-        };
 
 
         window.addEventListener("scroll", handleScroll);
@@ -142,8 +142,21 @@ const SkillSection: React.FC = () => {
         );
         window.addEventListener('touchmove', handleTouchMove);
 
-        return () => window.removeEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("wheel", handleHorizontalScroll);
+            window.removeEventListener("touchmove", handleTouchMove);
+        };
     }, []);
+
+    useEffect(() => {
+        if (!isInView) {
+            window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("wheel", handleHorizontalScroll);
+            window.removeEventListener("touchmove", handleTouchMove);
+
+        }
+    }, [isInView])
 
     useEffect(() => {
 
@@ -166,7 +179,7 @@ const SkillSection: React.FC = () => {
             let tempanimationFrameId = requestAnimationFrame(scrollHandler);
             setAnimationFrameId(tempanimationFrameId);
         };
-        
+
         if (isInView) {
             tempanimationFrameId = requestAnimationFrame(scrollHandler);
             setAnimationFrameId(tempanimationFrameId);

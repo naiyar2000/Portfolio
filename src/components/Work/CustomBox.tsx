@@ -25,6 +25,7 @@ const CustomBox = ({
                     height={160}
                     src={`${prefix}/images/${imageSrc}`}
                     alt="sample preview"
+                    unoptimized
                 />
             </div>
             <div className="px-4 py-2">

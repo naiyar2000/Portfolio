@@ -18,6 +18,7 @@ const Header = () => {
 
     // const setUser = useAuthStore((state) => state.setUser);
     const animationFrameId = useAppStore((state) => state.animationFramId);
+    const isHome = useAppStore((state) => state.isHome);
     const setAnimationFramId = useAppStore((state) => state.setAnimationFrameId);
 
     // useEffect(() => {
@@ -63,7 +64,7 @@ const Header = () => {
                         {/* <Button onClick={() => user ? handleLogout() : handleLogin()}>{user ? "LogOut" : "LogIn"}</Button> */}
                     </div>
                     {
-                        window.location.pathname.startsWith(prefix) ?
+                        isHome ?
                             <div className="md:hidden" onClick={() => setShowOptions(prev => !prev)}>
                                 {
                                     showOption ? <Delete size={"40px"} /> : <Image

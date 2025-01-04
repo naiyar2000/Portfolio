@@ -78,15 +78,15 @@ const Header = () => {
             {
                 showOption ? <div className="md:hidden fixed bottom-8 right-4 z-50">
                     <div className="flex flex-col gap-2">
-                        <Link href="/#about" className="flex items-center gap-2 bg-slate-200 rounded-md p-2">
+                        <Link href={`${prefix}/#about`} className="flex items-center gap-2 bg-slate-200 rounded-md p-2">
                             <User className="w-4 h-4" />
                             About Me
                         </Link>
-                        <Link href="/#skills" className="flex items-center gap-2 bg-slate-200 rounded-md p-2">
+                        <Link href={`${prefix}/#skills`} className="flex items-center gap-2 bg-slate-200 rounded-md p-2">
                             <Star className="w-4 h-4" />
                             My Skills
                         </Link>
-                        <Link href="/#gallery" className="flex items-center gap-2 bg-slate-200 rounded-md p-2">
+                        <Link href={`${prefix}/#gallery`} className="flex items-center gap-2 bg-slate-200 rounded-md p-2">
                             <Code className="w-4 h-4" />
                             Projects
                         </Link>

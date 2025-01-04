@@ -10,7 +10,7 @@ interface TransitionComponentProps {
 }
 
 const TransitionComponent = ({ children, transitionProps, className, style }: { children: JSX.Element, transitionProps?: TransitionComponentProps, className?: string, style?: React.CSSProperties }) => {
-    const [elementRef, isInView] = useInView({ threshold: transitionProps?.threshold || 0.1 });
+    const [elementRef, isInView] = useInView({ threshold: transitionProps?.threshold || 0.1 }, true);
     const transitionClass: TransitionType = transitionProps?.transitionType || "left-to-right";
 
 

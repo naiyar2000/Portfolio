@@ -7,12 +7,17 @@ import { prefix } from "@/prefix";
 // import { GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "@firebase/auth";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "./ui/button";
+import { ArrowUp } from "lucide-react";
+import { useAppStore } from "@/store/appStore";
 // import { useEffect } from "react";
 // import { Button } from "./ui/button";
 
 const Header = () => {
 
     // const setUser = useAuthStore((state) => state.setUser);
+    const animationFrameId = useAppStore((state) => state.animationFramId);
+    const setAnimationFramId = useAppStore((state) => state.setAnimationFrameId);
 
     // useEffect(() => {
     //     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -43,28 +48,39 @@ const Header = () => {
     // const { user } = useAuthStore();
 
     return (
-        <div className={`w-full text-white fixed top-0 z-50`}>
-            <div className={`${scrollPosition > 0 ? "bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg shadow-lg rounded-lg" : "bg-transparent"} flex justify-between items-center px-5 md:px-12 mx-2 my-2 h-16`}>
-                <div>
-                    <Link href={"/"}>
-                        <span className="font-bold from-neutral-400 text-2xl">Portfolio</span>
-                    </Link>
-                </div>
-                <div className="hidden md:flex gap-4 items-center">
-                    <Link href={"#about"}>About</Link>
-                    <Link href={"#skills"}>Skills</Link>
-                    {/* <Button onClick={() => user ? handleLogout() : handleLogin()}>{user ? "LogOut" : "LogIn"}</Button> */}
-                </div>
-                <div className="md:hidden">
-                    <Image
-                        src={`${prefix}/icons/hamburgerIcon.svg`}
-                        alt={"option"}
-                        width={40}
-                        height={30}
-                    />
+        <>
+            <div className={`w-full text-white fixed top-0 z-50`}>
+                <div className={`${scrollPosition > 0 ? "bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg shadow-lg rounded-lg" : "bg-transparent"} flex justify-between items-center px-5 md:px-12 mx-2 my-2 h-16`}>
+                    <div>
+                        <Link href={"/"}>
+                            <span className="font-bold from-neutral-400 text-2xl">Portfolio</span>
+                        </Link>
+                    </div>
+                    <div className="hidden md:flex gap-4 items-center">
+                        <Link href={"#about"}>About</Link>
+                        <Link href={"#skills"}>Skills</Link>
+                        {/* <Button onClick={() => user ? handleLogout() : handleLogin()}>{user ? "LogOut" : "LogIn"}</Button> */}
+                    </div>
+                    <div className="md:hidden">
+                        <Image
+                            src={`${prefix}/icons/hamburgerIcon.svg`}
+                            alt={"option"}
+                            width={40}
+                            height={30}
+                        />
+                    </div>
                 </div>
             </div>
-        </div>
+            <div className={`${scrollPosition > 0 ? "block" : "hidden"} fixed bottom-8 right-4 z-50`}>
+                <Button variant={"secondary"} onClick={() => {
+                    cancelAnimationFrame(animationFrameId);
+                    setAnimationFramId(0);
+                    window.scrollTo({ top: 0, behavior: "smooth" })
+                }}>
+                    <ArrowUp />
+                </Button>
+            </div>
+        </>
     )
 }
 

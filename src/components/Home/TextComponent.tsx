@@ -41,7 +41,6 @@ const TextComponent = () => {
     useEffect(() => {
         setEditMode(false);
     }, [user])
-    console.log("HELLO")
 
     return (
         <div className="group relative text-slate-300 md:top-1/4 md:w-2/5 md:text-white flex flex-col md:gap-2 gap-5">

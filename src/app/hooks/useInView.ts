@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 
-const useInView = (options = { threshold: 0.1 }) => {
+const useInView = (options = { threshold: 0.1 }, oneTime = false) => {
   const [isInView, setIsInView] = useState(false);
   const elementRef = useRef(null);
 
@@ -9,7 +9,9 @@ const useInView = (options = { threshold: 0.1 }) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           setIsInView(true);
-          observer.unobserve(entry.target);
+          if (oneTime) observer.unobserve(entry.target);
+        } else if (!oneTime) {
+          setIsInView(false);
         }
       });
     }, options);
@@ -23,9 +25,8 @@ const useInView = (options = { threshold: 0.1 }) => {
         observer.unobserve(elementRef.current);
       }
     };
-  }, [elementRef, options]);
+  }, [options, oneTime]);
 
   return [elementRef, isInView];
 };
-
 export default useInView;

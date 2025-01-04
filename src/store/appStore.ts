@@ -22,10 +22,12 @@ type AppStore = {
     canvaLayoutState: CanvaLayoutDataType;
     video: string,
     isSettingsOpen: boolean,
+    animationFramId: number,
     toggleSetting: () => void,
     setCanvaLayoutType: (canvaState: CanvaLayoutDataType) => void,
     setLayoutType: (layout: LayoutType) => void,
-    setVideo: (src: string) => void
+    setVideo: (src: string) => void,
+    setAnimationFrameId: (id: number) => void
 }
 
 export const useAppStore = create<AppStore>()(devtools((set) => ({
@@ -38,6 +40,7 @@ export const useAppStore = create<AppStore>()(devtools((set) => ({
     },
     video: "home_video",
     isSettingsOpen: false,
+    animationFramId: 0,
     toggleSetting: () => set(state => ({ ...state, isSettingsOpen: !state.isSettingsOpen })),
     setCanvaLayoutType: (canvaState: CanvaLayoutDataType) => {
         set(state => ({
@@ -50,5 +53,6 @@ export const useAppStore = create<AppStore>()(devtools((set) => ({
     setLayoutType: (layout: LayoutType) => {
         set((state) => ({ ...state, layoutType: layout }))
     },
-    setVideo: (src: string) => set(state => ({ ...state, video: src }))
+    setVideo: (src: string) => set(state => ({ ...state, video: src })),
+    setAnimationFrameId: (id: number) => set(state => ({ ...state, animationFramId: id }))
 })));

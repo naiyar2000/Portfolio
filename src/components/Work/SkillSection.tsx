@@ -11,6 +11,8 @@ import CircularProgressBar from "../ui/circularProgressBar";
 import { scrollingSection } from "../About/AboutSection";
 import TransitionComponent from "../AnimatedComponents/TransitionComponent";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import useInView from "@/app/hooks/useInView";
+import { useAppStore } from "@/store/appStore";
 
 const skillData: {
     label: string;
@@ -70,11 +72,14 @@ const skillData: {
 
 
 const SkillSection: React.FC = () => {
+    const animationFrameId = useAppStore(state => state.animationFramId);
+    const setAnimationFrameId = useAppStore(state => state.setAnimationFrameId);
     const sectionRef = useRef<HTMLElement>(null);
     const carouselRef = useRef<HTMLDivElement>(null);
+    const [carouselInviewRef, isInView] = useInView();
     const isMobile = useClientMediaQuery('(max-width: 600px)')
-
     const [rotationState, setRotationState] = useState<number>(72);
+
 
     const angleStep = 360 / skillData.length;
     const getCardRotation = (index: number) => {
@@ -94,18 +99,20 @@ const SkillSection: React.FC = () => {
         // Check if the card's rotation is within a small range around the center (0 degrees)
         return Math.abs(normalizedRotation) < 25; // You can adjust the threshold value (e.g., 15 degrees)
     };
+    const lastTouchX = useRef(0); // Store the last touch position to calculate delta
+
 
     useEffect(() => {
         const handleScroll = () => {
             const section = sectionRef.current;
             const carousel = carouselRef.current;
-        
+
             if (!section || !carousel) return;
-        
+
             const { top, height } = section.getBoundingClientRect();
             const viewportHeight = window.innerHeight;
             const threshold = 0.8 * viewportHeight; // Start rotation when the section is 20% into the viewport
-        
+
             // Check if the section is within the viewport and past the threshold
             if (top <= viewportHeight && top + height >= 0 && top <= viewportHeight - threshold) {
                 const progress = Math.max(0, Math.min(1, (viewportHeight - top - threshold) / (height - threshold)));
@@ -113,18 +120,75 @@ const SkillSection: React.FC = () => {
                 setRotationState(-1 * rotation);
             }
         };
-        
+        const handleHorizontalScroll = (e: WheelEvent) => {
+            // Convert the horizontal scroll (deltaX) to vertical scroll (deltaY)
+            window.scrollBy(0, e.deltaX); // Scroll vertically using horizontal scroll amount
+        };
+        const handleTouchMove = (e: TouchEvent) => {
+            const currentTouchX = e.touches[0].clientX; // Get the current horizontal touch position
+            const touchDelta = currentTouchX - lastTouchX.current; // Calculate the horizontal movement difference
+
+            const scrollAmount = touchDelta * 2; // Slow down the scroll by adjusting the multiplier (0.1)
+
+            window.scrollBy(0, touchDelta < 0 ? 36 : -36); // Scroll vertically based on horizontal touch movement
+
+            lastTouchX.current = currentTouchX; // Update lastTouchX for the next touchmove
+        };
+
 
         window.addEventListener("scroll", handleScroll);
+        window.addEventListener("wheel",
+            handleHorizontalScroll
+        );
+        window.addEventListener('touchmove', handleTouchMove);
+
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
+    useEffect(() => {
+
+        let tempanimationFrameId: number;
+
+        const scrollHandler = () => {
+            const section = sectionRef.current;
+            if (!section) return;
+
+            const { bottom } = section.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
+
+            // Stop scrolling when the bottom of the section is within or above the viewport
+            if (bottom <= viewportHeight) {
+                return; // Stop the animation
+            }
+
+            // Scroll by a fixed amount
+            window.scrollBy(0, 2); // Adjust for smoother or faster scrolling
+            let tempanimationFrameId = requestAnimationFrame(scrollHandler);
+            setAnimationFrameId(tempanimationFrameId);
+        };
+        
+        if (isInView) {
+            tempanimationFrameId = requestAnimationFrame(scrollHandler);
+            setAnimationFrameId(tempanimationFrameId);
+        } else {
+            cancelAnimationFrame(animationFrameId);
+        }
+
+
+
+        return () => {
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+            }
+        };
+    }, [isInView]);
 
 
     return (
         <section id="skills" ref={sectionRef} className="relative h-[500vh] text-slate-200">
-            <div className="sticky top-20 flex flex-row md:flex-row">
+            <div ref={typeof (carouselInviewRef) != "boolean" ? carouselInviewRef : undefined} className="sticky top-32 md:top-20 flex flex-row md:flex-row">
                 <div
-                    className="sticky top-20 h-screen flex items-start justify-center flex-1"
+                    className="sticky top-32 md:top-20 h-screen flex items-start justify-center flex-1"
                 >
                     <div className="absolute inset-0">
                         <div className="flex flex-col justify-start items-center md:sticky top-0 h-screen flex-1">

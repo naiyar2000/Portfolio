@@ -8,8 +8,19 @@
 @media screen and (max-width: 768px) {
   .card-carousel {
     transform: perspective(700px);
+    /* animation: autoScroll 10s linear infinite; */
   }
 
+}
+
+@keyframes autoScroll {
+  0% {
+    transform: perspective(700px) rotateY(0);
+  }
+  100% {
+    transform: perspective(700px) rotateY(360deg);
+  }
+  
 }
 
 .highlighted-card {

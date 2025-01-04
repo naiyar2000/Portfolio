@@ -123,6 +123,7 @@ const SkillSection: React.FC = () => {
         window.scrollBy(0, e.deltaX); // Scroll vertically using horizontal scroll amount
     };
     const handleTouchMove = (e: TouchEvent) => {
+        if(!isInView) return;
         const currentTouchX = e.touches[0].clientX; // Get the current horizontal touch position
         const touchDelta = currentTouchX - lastTouchX.current; // Calculate the horizontal movement difference
 

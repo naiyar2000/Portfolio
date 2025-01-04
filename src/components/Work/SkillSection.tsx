@@ -149,14 +149,14 @@ const SkillSection: React.FC = () => {
         };
     }, []);
 
-    useEffect(() => {
-        if (!isInView) {
-            window.removeEventListener("scroll", handleScroll);
-            window.removeEventListener("wheel", handleHorizontalScroll);
-            window.removeEventListener("touchmove", handleTouchMove);
+    // useEffect(() => {
+    //     if (!isInView) {
+    //         window.removeEventListener("scroll", handleScroll);
+    //         window.removeEventListener("wheel", handleHorizontalScroll);
+    //         window.removeEventListener("touchmove", handleTouchMove);
 
-        }
-    }, [isInView])
+    //     }
+    // }, [isInView])
 
     useEffect(() => {
 

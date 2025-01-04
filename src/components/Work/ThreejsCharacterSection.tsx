@@ -7,8 +7,8 @@ const ThreeDSection = dynamic(() => import("../ThreeDSection/ThreeDSection"), { 
 
 const ThreejsCharacterSection = () => {
     return (
-        <div className="flex flex-col md:flex-row w-full md:h-auto h-screen overflow-visible px-4 md:px-10 py-8 md:py-24 gap-2 items-stretch">
-            <div className="animate-character-section w-full md:w-1/3 min-h-full  rounded-md">
+        <div className="flex flex-col md:flex-row w-full md:h-auto h-auto overflow-visible md:px-10 py-24 md:py-24 gap-2 items-stretch">
+            <div className="animate-character-section w-full md:w-1/3 h-screen rounded-md">
                 <ThreeDSection />
             </div>
             <div className="animate-character-description flex-1 px-4 md:px-8 rounded-md">

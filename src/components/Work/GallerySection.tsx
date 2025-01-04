@@ -21,14 +21,14 @@ const GallerySection: React.FC = () => {
 
     const [positions, setPositions] = useState<Position[]>([
         {
-            id: 'box1',
-            x: 549,
-            y: 149,
+            id: 'box3',
+            x: 95,
+            y: 75,
             content: {
-                title: "Glowy Blob",
-                description: "An interactive canvas feature with a luminous, color-shifting blob that follows your cursor, creating an enchanting visual trail.",
-                sandboxCode: "j59shq",
-                imageSrc: "web_cloud.gif"
+                title: "Fuid Effect",
+                description: "An interactive canvas feature where fluid, flowing visuals respond dynamically to mouse hover, creating a captivating and immersive user experience.",
+                sandboxCode: "x83n8l",
+                imageSrc: "mousecloud.gif"
             }
         },
         {
@@ -43,16 +43,16 @@ const GallerySection: React.FC = () => {
             }
         },
         {
-            id: 'box3',
-            x: 95,
-            y: 75,
+            id: 'box1',
+            x: 549,
+            y: 149,
             content: {
-                title: "Fuid Effect",
-                description: "An interactive canvas feature where fluid, flowing visuals respond dynamically to mouse hover, creating a captivating and immersive user experience.",
-                sandboxCode: "x83n8l",
-                imageSrc: "mousecloud.gif"
+                title: "Glowy Blob",
+                description: "An interactive canvas feature with a luminous, color-shifting blob that follows your cursor, creating an enchanting visual trail.",
+                sandboxCode: "j59shq",
+                imageSrc: "web_cloud.gif"
             }
-        }
+        },
     ]);
     const handleDragEnd = (event: DragEndEvent) => {
         const { id } = event.active;
@@ -71,7 +71,7 @@ const GallerySection: React.FC = () => {
 
 
     return (
-        <section className=''>
+        <section id='gallery' className=''>
             <DndContext modifiers={[restrictToParentElement]} onDragEnd={handleDragEnd}>
                 <div className="md:h-screen w-full md:relative">
                     <div className="mb-4">

@@ -8,7 +8,7 @@ import { prefix } from "@/prefix";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "./ui/button";
-import { ArrowUp, Code, Star, User, X as Delete } from "lucide-react";
+import { ArrowUp, Code, Star, User, X as Delete, Home } from "lucide-react";
 import { useAppStore } from "@/store/appStore";
 import { useState } from "react";
 // import { useEffect } from "react";
@@ -48,7 +48,7 @@ const Header = () => {
     const { scrollPosition } = useScrollPosition();
     const [showOption, setShowOptions] = useState(false);
     // const { user } = useAuthStore();
-
+    console.log(window.location.pathname)
     return (
         <>
             <div className={`w-full text-white fixed top-0 z-50`}>
@@ -63,30 +63,37 @@ const Header = () => {
                         <Link href={"#skills"}>Skills</Link>
                         {/* <Button onClick={() => user ? handleLogout() : handleLogin()}>{user ? "LogOut" : "LogIn"}</Button> */}
                     </div>
-                    <div className="md:hidden" onClick={() => setShowOptions(prev => !prev)}>
-                        {
-                            showOption ? <Delete size={"40px"} /> : <Image
-                                src={`${prefix}/icons/hamburgerIcon.svg`}
-                                alt={"option"}
-                                width={40}
-                                height={30}
-                            />
-                        }
-                    </div>
+                    {
+                        window.location.pathname.startsWith(prefix) ?
+                            <div className="md:hidden" onClick={() => setShowOptions(prev => !prev)}>
+                                {
+                                    showOption ? <Delete size={"40px"} /> : <Image
+                                        src={`${prefix}/icons/hamburgerIcon.svg`}
+                                        alt={"option"}
+                                        width={40}
+                                        height={30}
+                                    />
+                                }
+                            </div>
+                            :
+                            <Link href={`${prefix}/`} className="md:hidden" >
+                                <Home size={"35px"} />
+                            </Link>
+                    }
                 </div>
             </div>
             {
                 showOption ? <div className="md:hidden fixed bottom-8 right-4 z-50">
                     <div className="flex flex-col gap-2">
-                        <Link href={`${prefix}/#about`} className="flex items-center gap-2 bg-slate-200 rounded-md p-2">
+                        <Link href={`#about`} className="flex items-center gap-2 bg-slate-200 rounded-md p-2">
                             <User className="w-4 h-4" />
                             About Me
                         </Link>
-                        <Link href={`${prefix}/#skills`} className="flex items-center gap-2 bg-slate-200 rounded-md p-2">
+                        <Link href={`#skills`} className="flex items-center gap-2 bg-slate-200 rounded-md p-2">
                             <Star className="w-4 h-4" />
                             My Skills
                         </Link>
-                        <Link href={`${prefix}/#gallery`} className="flex items-center gap-2 bg-slate-200 rounded-md p-2">
+                        <Link href={`#gallery`} className="flex items-center gap-2 bg-slate-200 rounded-md p-2">
                             <Code className="w-4 h-4" />
                             Projects
                         </Link>

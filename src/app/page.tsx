@@ -1,5 +1,6 @@
 "use client";
 import AboutSection from "@/components/About/AboutSection";
+import Contact from "@/components/Contact/Contact";
 import ExperienceSection from "@/components/Experience/ExperienceSection";
 import HeroSection from "@/components/Home/HeroSection";
 import GallerySection from "@/components/Work/GallerySection";
@@ -14,6 +15,7 @@ export default function Home() {
       <SkillSection />
       <ExperienceSection />
       <GallerySection />
+      <Contact />
     </>
   );
 }

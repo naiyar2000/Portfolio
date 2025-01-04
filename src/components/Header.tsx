@@ -48,7 +48,6 @@ const Header = () => {
     const { scrollPosition } = useScrollPosition();
     const [showOption, setShowOptions] = useState(false);
     // const { user } = useAuthStore();
-    console.log(window.location.pathname)
     return (
         <>
             <div className={`w-full text-white fixed top-0 z-50`}>

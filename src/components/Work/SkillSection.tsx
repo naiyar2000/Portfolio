@@ -99,19 +99,21 @@ const SkillSection: React.FC = () => {
         const handleScroll = () => {
             const section = sectionRef.current;
             const carousel = carouselRef.current;
-
+        
             if (!section || !carousel) return;
-
+        
             const { top, height } = section.getBoundingClientRect();
             const viewportHeight = window.innerHeight;
-
-            if (top <= viewportHeight && top + height >= 0) {
-                const progress = Math.max(0, Math.min(1, (viewportHeight - top) / height));
-                const rotation = progress * 360; // Full rotation as user scrolls through section
-                // carousel.style.transform = `rotateY(${rotation}deg)`;
+            const threshold = 0.8 * viewportHeight; // Start rotation when the section is 20% into the viewport
+        
+            // Check if the section is within the viewport and past the threshold
+            if (top <= viewportHeight && top + height >= 0 && top <= viewportHeight - threshold) {
+                const progress = Math.max(0, Math.min(1, (viewportHeight - top - threshold) / (height - threshold)));
+                const rotation = progress * 360; // Full rotation as user scrolls past the threshold
                 setRotationState(-1 * rotation);
             }
         };
+        
 
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);

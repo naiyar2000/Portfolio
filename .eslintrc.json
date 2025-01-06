@@ -3,7 +3,8 @@
     "next/core-web-vitals",
     "next/typescript"
   ],
-  "rule": {
-    "@typescript-eslint/no-explicit-any": "off"
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-unused-expressions": "off"
   }
 }

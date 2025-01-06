@@ -126,7 +126,7 @@ export const mouseCloud = (canvas: HTMLCanvasElement, cancelToken: { cancel: boo
         dx: number;
         dy: number;
         friction: number;
-        alpha?: any
+        alpha?: number;
     } = {
         x: window.innerWidth / 2,
         y: window.innerHeight / 2,
@@ -148,7 +148,7 @@ export const mouseCloud = (canvas: HTMLCanvasElement, cancelToken: { cancel: boo
     };
 
     let mouseStopped = false;
-    let stopTimer: any;
+    let stopTimer: NodeJS.Timeout;
 
     window.addEventListener('mousemove', (event) => {
         mouse.x = event.x;

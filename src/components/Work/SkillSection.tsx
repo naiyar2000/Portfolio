@@ -129,7 +129,7 @@ const SkillSection: React.FC = () => {
             const currentTouchX = e.touches[0].clientX; // Get the current horizontal touch position
             const touchDelta = currentTouchX - lastTouchX.current; // Calculate the horizontal movement difference
 
-            const scrollAmount = touchDelta * 2; // Slow down the scroll by adjusting the multiplier (0.1)
+            // const scrollAmount = touchDelta * 2; // Slow down the scroll by adjusting the multiplier (0.1)
 
             window.scrollBy(0, touchDelta < 0 ? 36 : -36); // Scroll vertically based on horizontal touch movement
 
@@ -176,7 +176,7 @@ const SkillSection: React.FC = () => {
 
             // Scroll by a fixed amount
             window.scrollBy(0, 2); // Adjust for smoother or faster scrolling
-            let tempanimationFrameId = requestAnimationFrame(scrollHandler);
+            const tempanimationFrameId = requestAnimationFrame(scrollHandler);
             setAnimationFrameId(tempanimationFrameId);
         };
 

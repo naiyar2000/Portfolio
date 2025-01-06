@@ -20,4 +20,6 @@ const DraggableBox = React.memo(({ id, initialX, initialY, children }: { id: str
     );
 });
 
+DraggableBox.displayName = "DraggableBox";
+
 export default DraggableBox;

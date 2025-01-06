@@ -15,7 +15,7 @@ type HomeStore = {
     setHomePageData: () => Promise<void>;
 }
 
-export const useHomeStore = create<HomeStore>()(devtools((set) => ({
+export const useHomeStore = create<HomeStore>()(devtools(() => ({
     homePageData: {
         header: "👋 Hi, I'm NAIYAR",
         title: "I craft engaging, interactive experiences with code, showcasing the creativity and dedication of a passionate frontend developer.",

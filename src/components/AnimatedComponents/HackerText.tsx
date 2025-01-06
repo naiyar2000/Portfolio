@@ -11,7 +11,7 @@ const HackerText = ({ className, style, text, characters = "ABCDEFGHIJKLMNOPQRST
 
     const textRef = useRef<HTMLSpanElement>(null);
     const [textState, setTextState] = useState(text);
-    let interval = useRef<NodeJS.Timeout | null>(null);
+    const interval = useRef<NodeJS.Timeout | null>(null);
 
     useEffect(() => {
         const handleMouseOver = () => {

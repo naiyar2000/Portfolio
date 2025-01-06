@@ -14,7 +14,7 @@ const CanvaLayout = () => {
         if (!canvas) return;
 
 
-        let cancelToken = { cancel: false, frameId: undefined };
+        const cancelToken = { cancel: false, frameId: undefined };
 
         const context = canvas.getContext('2d');
         if (!context) return;

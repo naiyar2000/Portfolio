@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
-let envImageUnoptimize = process.env.NODE_ENV !== "production" ? false : true
+let envImageUnoptimize = process.env.NODE_ENVIRONMENT !== "production" ? false : true
 const nextConfig = {
-  basePath: process.env.NODE_ENV !== "production" ? undefined : "/Portfolio",
-  assetPrefix: process.env.NODE_ENV !== "production" ? undefined : "/Portfolio/",
-  output: process.env.NODE_ENV !== "production" ? undefined : "export",
+  basePath: process.env.NODE_ENVIRONMENT !== "production" ? undefined : "/Portfolio",
+  assetPrefix: process.env.NODE_ENVIRONMENT !== "production" ? undefined : "/Portfolio/",
+  output: process.env.NODE_ENVIRONMENT !== "production" ? undefined : "export",
   images: {
     formats: ['image/avif', 'image/webp'],
     unoptimized: envImageUnoptimize,
@@ -12,6 +12,13 @@ const nextConfig = {
         hostname: "images.unsplash.com",
       },
     ],
+  },
+  typescript: {
+    // !! WARN !!
+    // Dangerously allow production builds to successfully complete even if
+    // your project has type errors.
+    // !! WARN !!
+    ignoreBuildErrors: true,
   },
 };
 

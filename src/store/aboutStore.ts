@@ -15,7 +15,7 @@ type AboutStore = {
     setAboutPageData: () => Promise<void>;
 }
 
-export const useAboutStore = create<AboutStore>()(devtools((set) => ({
+export const useAboutStore = create<AboutStore>()(devtools(() => ({
     aboutPageData: [],
     loading: true,
     setAboutPageData: async () => {

@@ -31,6 +31,7 @@ type ActionMapping = {
 }
 
 interface DeadPoolProps {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     props: any,
     characterAction?: ActionTypes,
     pause?: boolean
@@ -69,10 +70,10 @@ function Deadpool({ props, characterAction, pause }: DeadPoolProps) {
         return () => {
             actions[actionType?.[`${characterAction || "laugh"}`] || "Armature.003|mixamo.com|Layer0"]?.fadeOut(0.5);
         }
-    }, [nodes, actions, characterAction, animations, pause])
+    }, [nodes, actions, characterAction, animations, pause, actionType])
 
     useEffect(() => {
-        if(isMobile) {
+        if (isMobile) {
             setScale(0.005)
         }
     }, [isMobile])

@@ -1,4 +1,4 @@
-import { Mail, Linkedin, Github, Twitter } from "lucide-react";
+import { Mail, Linkedin, Github } from "lucide-react";
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
@@ -11,7 +11,7 @@ export default function Footer() {
                 <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
                     {/* Updated Left Section */}
                     <div className="max-w-md">
-                        <h2 className="text-2xl font-semibold text-white mb-4">Let's Collaborate</h2>
+                        <h2 className="text-2xl font-semibold text-white mb-4">{"Let's Collaborate"}</h2>
                         <div className="text-sm text-gray-400 flex flex-col md:flex-row gap-0 md:gap-2">
                             <div className="block md:flex flex-col gap-2">
                                 <div>🚀 Frontend Developer</div>

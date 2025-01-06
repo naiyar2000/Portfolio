@@ -79,7 +79,11 @@ const ThreeDSection = ({
                 <div className="group-hover:flex flex cursor-pointer md:flex-col gap-2 z-10 md:hidden absolute top-5 left-5">
                     {(["dance", "backflip", "sideflip", "laugh"] as ActionTypes[]).map((action) => (
                         <Button className='p-2 cursor-pointer rounded-md' key={action} onClick={() => {
-                            action === "sideflip" ? setPosition(isMobile ? [2, -3, -28, 7.4] : [1, -4, -30, 4]) : setPosition(isMobile ? [3, -3, -3, 8] : [1, -3, -3, 4])
+                            if (action === "sideflip") {
+                                setPosition(isMobile ? [2, -3, -28, 7.4] : [1, -4, -30, 4])
+                            } else {
+                                setPosition(isMobile ? [3, -3, -3, 8] : [1, -3, -3, 4])
+                            }
                             setCharacterAction(action)
                         }}>{getIcons(action)}</Button>
                     ))}

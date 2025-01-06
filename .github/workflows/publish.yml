@@ -60,7 +60,7 @@ jobs:
           echo "Build completed. Listing contents..."
           ls -la
         env:
-          NODE_ENV: production
+          NODE_ENVIRONMENT: production
 
       - name: List .next directory contents
         run: ls -Rla .next

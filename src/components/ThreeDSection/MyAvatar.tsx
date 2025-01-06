@@ -33,7 +33,7 @@ type GLTFResult = GLTF & {
     }
 }
 
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function MyAvatar(props: any) {
     const { nodes, materials } = useGLTF(`${prefix}/model/avatar/my_avatar.glb`) as GLTFResult
 

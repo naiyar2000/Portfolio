@@ -67,7 +67,7 @@ export const SettingsComponent = () => {
                         disabled={layoutType === "video"}
                         value={pattern}
                         onValueChange={(e) => {
-                            let newLayouPattern: CanvaLayoutDataType = {
+                            const newLayouPattern: CanvaLayoutDataType = {
                                 pattern: e as CanvaPatternType
                             }
                             changeLayout(newLayouPattern);

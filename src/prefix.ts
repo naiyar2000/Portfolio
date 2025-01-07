@@ -1,3 +1,3 @@
-const prefix = process.env.NODE_ENVIRONMENT !== "production" ? "" : "/Portfolio";
+const prefix = process.env.NODE_ENV !== "production" ? "" : "/Portfolio";
 
 export { prefix };

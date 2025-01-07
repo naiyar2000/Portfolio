@@ -37,7 +37,7 @@ const BlurLayout = () => {
     }, []);
 
     return (
-        <div className='h-screen w-full overflow-hidden absolute'>
+        <div className='h-screen w-full overflow-hidden absolute -z-50'>
             <div ref={devRef} id='blob' />
             <div id="blur"></div>
         </div>

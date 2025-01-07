@@ -1,23 +1,13 @@
 "use client"
 import React, { useEffect } from 'react'
-// import { useHomeStore } from '@/store/homeStore'
 import useAuthStore from '@/store/authStore'
 import TextComponent from './TextComponent'
-// import { Button } from '../ui/button'
-// import { RefreshCcw } from 'lucide-react'
 import Image from 'next/image'
 import { prefix } from '@/prefix'
-// import GitHubCalendar from 'react-github-calendar';
-
 
 const HeroSection = () => {
-    // const { homePageData, setHomePageData } = useHomeStore();
 
     const { user } = useAuthStore();
-
-    useEffect(() => {
-        // setHomePageData();
-    }, [user])
 
     return (
         <section className="relative min-h-screen flex flex-col pt-48 md:pt-0 md:flex-row md:items-center md:justify-between md:px-10">

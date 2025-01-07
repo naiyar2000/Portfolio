@@ -14,7 +14,7 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import useInView from "@/app/hooks/useInView";
 import { useAppStore } from "@/store/appStore";
 
-const skillData: {
+export const skillData: {
     label: string;
     logo: string;
     progress: number;

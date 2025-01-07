@@ -15,31 +15,32 @@ const experiences: ExperienceType[] = [
     title: 'Full Stack Developer',
     company: 'Mercedes-Benz Research and Development',
     date: 'Nov 2023 - Present',
-    description: `Developed and deployed a high-quality React app to production, implemented SonarQube and Black Duck for code quality and vulnerability checks, migrated infrastructure to AWS serverless architecture, increasing scalability while reducing costs, and improved UX with Figma and backend APIs using Spring Boot.`,
+    description: `Delivered a React app to production, migrated to AWS serverless architecture, and boosted team efficiency by 20% with GitHub Copilot.`,
     type: 'work'
   },
   {
     title: 'Full Stack Developer',
     company: 'Incture Technologies',
     date: 'Jul 2022 - Nov 2023',
-    description: `Refactored legacy codebases for modern frameworks, improving system performance by 20%. Led cross-environment code management with best practices in CI/CD pipelines. Developed modular and reusable components, REST APIs, and implemented automated testing strategies.`,
+    description: `Modernized legacy code, developed scalable APIs, and implemented automated testing to enhance performance by 20%.`,
     type: 'work'
   },
   {
     title: 'Freelance Project: Prayas Booking App',
     company: 'Self-Employed',
     date: 'May 2021 - Dec 2021',
-    description: `Built a cross-platform mobile app using Flutter and a React web app for service booking. Integrated Firebase for authentication and real-time notifications, enabling seamless slot management for various services.`,
+    description: `Built a booking app with Flutter and React, integrating Firebase for real-time notifications and secure authentication.`,
     type: 'work'
   },
   {
     title: 'Bachelors Degree in Electrical Engineering',
     company: 'Veer Surendra Sai University of Technology',
     date: 'Graduated 2022',
-    description: 'Achieved a GPA of 8.3 while studying Electrical Engineering, developing strong analytical and problem-solving skills.',
+    description: `Graduated with an 8.3 GPA, excelling in problem-solving and analytical skills.`,
     type: 'education'
   }
 ];
+
 
 
 const ExperienceCard = ({ title, company, date, description, type }: ExperienceType) => {

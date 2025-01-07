@@ -20,7 +20,7 @@ const HeroSection = () => {
     }, [user])
 
     return (
-        <section className="relative min-h-screen flex flex-col justify-center md:flex-row md:items-center md:justify-between md:px-10">
+        <section className="relative min-h-screen flex flex-col pt-48 md:pt-0 md:flex-row md:items-center md:justify-between md:px-10">
             <TextComponent />
             <div className="hidden relative scale-110 flex-1 md:flex md:justify-center">
                 <div className='absolute bottom-0 -z-10' style={{

@@ -43,11 +43,12 @@ const PreviewDrawer = () => {
 
     useEffect(() => {
         let tempanimationFrameId: number;
+        tempanimationFrameId = 0;
 
         const rotateCards = () => {
 
             console.log(rotationState)
-            setRotationState(prev => prev-1)
+            setRotationState(prev => prev - 1)
             const tempanimationFrameId = requestAnimationFrame(rotateCards);
             setAnimationFrameId(tempanimationFrameId);
         };

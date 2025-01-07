@@ -12,27 +12,35 @@ type ExperienceType = {
 
 const experiences: ExperienceType[] = [
   {
-    title: 'Frontend Developer',
-    company: 'TechCorp',
-    date: 'Jan 2022 - Present',
-    description: 'Developing interactive web applications using React, Next.js, and Tailwind CSS.',
+    title: 'Full Stack Developer',
+    company: 'Mercedes-Benz Research and Development',
+    date: 'Nov 2023 - Present',
+    description: `Developed and deployed a high-quality React app to production, implemented SonarQube and Black Duck for code quality and vulnerability checks, migrated infrastructure to AWS serverless architecture, increasing scalability while reducing costs, and improved UX with Figma and backend APIs using Spring Boot.`,
     type: 'work'
   },
   {
-    title: 'Web Development Intern',
-    company: 'StartUp XYZ',
-    date: 'Jun 2021 - Dec 2021',
-    description: 'Assisted in creating responsive websites and improving performance metrics by 20%.',
+    title: 'Full Stack Developer',
+    company: 'Incture Technologies',
+    date: 'Jul 2022 - Nov 2023',
+    description: `Refactored legacy codebases for modern frameworks, improving system performance by 20%. Led cross-environment code management with best practices in CI/CD pipelines. Developed modular and reusable components, REST APIs, and implemented automated testing strategies.`,
     type: 'work'
   },
   {
-    title: 'B.Sc in Computer Science',
-    company: 'University of Example',
-    date: '2018 - 2021',
-    description: 'Studied web development, data structures, and algorithms.',
+    title: 'Freelance Project: Prayas Booking App',
+    company: 'Self-Employed',
+    date: 'May 2021 - Dec 2021',
+    description: `Built a cross-platform mobile app using Flutter and a React web app for service booking. Integrated Firebase for authentication and real-time notifications, enabling seamless slot management for various services.`,
+    type: 'work'
+  },
+  {
+    title: 'Bachelors Degree in Electrical Engineering',
+    company: 'Veer Surendra Sai University of Technology',
+    date: 'Graduated 2022',
+    description: 'Achieved a GPA of 8.3 while studying Electrical Engineering, developing strong analytical and problem-solving skills.',
     type: 'education'
   }
-]
+];
+
 
 const ExperienceCard = ({ title, company, date, description, type }: ExperienceType) => {
   const Icon = type === 'work' ? Briefcase : GraduationCap

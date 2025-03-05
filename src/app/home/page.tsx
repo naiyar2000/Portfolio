@@ -1,5 +1,5 @@
 "use client";
-import AboutSection from "@/components/About/AboutSection";
+// import AboutSection from "@/components/About/AboutSection";
 import Contact from "@/components/Contact/Contact";
 import ExperienceSection from "@/components/Experience/ExperienceSection";
 import HeroSection from "@/components/Home/HeroSection";

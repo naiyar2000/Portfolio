@@ -1,10 +1,4 @@
 "use client";
-import AboutSection from "@/components/About/AboutSection";
-import Contact from "@/components/Contact/Contact";
-import ExperienceSection from "@/components/Experience/ExperienceSection";
-import HeroSection from "@/components/Home/HeroSection";
-import GallerySection from "@/components/Work/GallerySection";
-import SkillSection from "@/components/Work/SkillSection";
 import { useAppStore } from "@/store/appStore";
 import { useEffect } from "react";
 
@@ -16,13 +10,7 @@ export default function Home() {
   }, [])
   return (
     <>
-  <h1 className="text-white">Landing Page</h1>
-      {/* <HeroSection /> */}
-      {/* <AboutSection /> */}
-      {/* <SkillSection />
-      <ExperienceSection />
-      <GallerySection />
-      <Contact /> */}
+      <h1 className="text-white">Landing Page</h1>
     </>
   );
 }

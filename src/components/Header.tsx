@@ -14,7 +14,7 @@ import { useState } from "react";
 // import { useEffect } from "react";
 // import { Button } from "./ui/button";
 
-const Header = () => {
+const Header = ({ showLinks }: { showLinks?: boolean }) => {
 
     // const setUser = useAuthStore((state) => state.setUser);
     const animationFrameId = useAppStore((state) => state.animationFramId);
@@ -58,7 +58,7 @@ const Header = () => {
                             <span className="font-bold from-neutral-400 text-2xl">Portfolio</span>
                         </Link>
                     </div>
-                    <div className="hidden md:flex gap-4 items-center">
+                    <div className={`hidden md:${showLinks ? "flex" : "hidden"} gap-4 items-center`}>
                         <Link href={"#about"}>About</Link>
                         <Link href={"#skills"}>Skills</Link>
                         <Link href={"#gallery"}>Gallery</Link>

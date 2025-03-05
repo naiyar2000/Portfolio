@@ -5,14 +5,14 @@ import React from 'react'
 import Header from '../Header'
 import BlurLayout from '../CustomLayouts/BlurLayout'
 
-const LayoutComponents = () => {
+const LayoutComponents = ({ showLinks }: { showLinks?: boolean }) => {
 
     return (
         <>
             {/* <SettingsComponent />
             <CustomizableLayout /> */}
             <BlurLayout />
-            <Header />
+            <Header showLinks={showLinks} />
         </>
     )
 }

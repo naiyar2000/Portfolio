@@ -12,7 +12,7 @@ export default function Home() {
   useEffect(() => {
     setIsHome(true);
     setTimeout(() => {
-      router.push(`${prefix}/home`);
+      router.push(`/home`);
     }, 2000)
   }, [setIsHome, router]);
 

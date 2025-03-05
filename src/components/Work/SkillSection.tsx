@@ -60,6 +60,7 @@ export const skillData: {
             logo: "tailwind",
             progress: 85,
             description: "Utility-first CSS framework for creating custom designs without the hassle.",
+            demoRoute: "/rental-car"
         },
         {
             label: "Three.js",
@@ -273,7 +274,7 @@ const SkillSection: React.FC = () => {
                                             </div>
                                             <div>
                                                 {
-                                                    data.demoRoute && <Link href="/threejs-character">
+                                                    data.demoRoute && <Link href={data.demoRoute}>
                                                         <Button size={"sm"}>View Demo</Button>
                                                     </Link>
                                                 }

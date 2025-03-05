@@ -20,6 +20,9 @@ importers:
       '@firebase/firestore':
         specifier: ^4.7.5
         version: 4.7.5(@firebase/app@0.10.16)
+      '@fontsource/poppins':
+        specifier: ^5.2.5
+        version: 5.2.5
       '@lottiefiles/dotlottie-react':
         specifier: ^0.11.0
         version: 0.11.0(react@19.0.0-rc-66855b96-20241106)
@@ -525,6 +528,9 @@ packages:
 
   '@floating-ui/utils@0.2.8':
     resolution: {integrity: sha512-kym7SodPp8/wloecOpcmSnWJsK7M0E5Wg8UcFA+uO4B9s5d0ywXOEro/8HM9x0rW+TljRzul/14UYz3TleT3ig==}
+
+  '@fontsource/poppins@5.2.5':
+    resolution: {integrity: sha512-1S3k45pZOz2jqGPPqKw0in3uxFwnB+d5jSU8Tp9YwH/dIJptE3jdkQbYN0QD861GtuOpn6QhPW/yKt1w7hVRBQ==}
 
   '@grpc/grpc-js@1.9.15':
     resolution: {integrity: sha512-nqE7Hc0AzI+euzUwDAy0aY5hCp10r734gMGRdU+qOPX0XSceI2ULrcXB5U2xSc5VkWwalCj4M7GzCAygZl2KoQ==}
@@ -3899,6 +3905,8 @@ snapshots:
       react-dom: 19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106)
 
   '@floating-ui/utils@0.2.8': {}
+
+  '@fontsource/poppins@5.2.5': {}
 
   '@grpc/grpc-js@1.9.15':
     dependencies:

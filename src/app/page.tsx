@@ -16,12 +16,13 @@ export default function Home() {
   }, [])
   return (
     <>
-      <HeroSection />
+  <h1 className="text-white">Landing Page</h1>
+      {/* <HeroSection /> */}
       {/* <AboutSection /> */}
-      <SkillSection />
+      {/* <SkillSection />
       <ExperienceSection />
       <GallerySection />
-      <Contact />
+      <Contact /> */}
     </>
   );
 }

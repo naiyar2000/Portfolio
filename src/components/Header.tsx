@@ -54,7 +54,7 @@ const Header = () => {
             <div className={`w-full text-white fixed top-0 z-50`}>
                 <div className={`${scrollPosition > 0 ? "bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg shadow-lg rounded-lg" : "bg-transparent"} flex justify-between items-center px-5 md:px-12 mx-2 my-2 h-16`}>
                     <div>
-                        <Link href={"/"}>
+                        <Link href={"/home"}>
                             <span className="font-bold from-neutral-400 text-2xl">Portfolio</span>
                         </Link>
                     </div>

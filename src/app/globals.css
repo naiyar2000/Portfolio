@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import '@fontsource/poppins';
+ 
 
 body {
   background: linear-gradient(135deg, #050506, #0a1f1f, #000000);
@@ -9,6 +11,10 @@ body {
 .layout-canvas {
   background: linear-gradient(135deg, #050506, #0a1f1f, #000000);
   /* background: black; */
+}
+
+.bg-custom-gradient {
+  background: radial-gradient(circle, #4C4C4C 0%, #373737 100%);
 }
 
 
@@ -137,6 +143,15 @@ body {
 
 
 @layer utilities {
+
+  .bg-custom-neon {
+    background-color: hsl(71, 79%, 59%);
+  }
+
+  .text-custom-neon {
+    color: hsl(71, 79%, 59%);
+  }
+
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
@@ -195,6 +210,7 @@ body {
     backdrop-filter: blur(20px);
     box-shadow: 0 1px 24px -1px;
   }
+
 
   .animate-character-description {
     @apply custom-transparent-background;
@@ -295,6 +311,7 @@ body {
     --clr-neon: hsl(144, 100%, 54%);
     --clr-bg: hsl(323 21% 16%);
     --transpare-glass-background: linear-gradient(150deg, rgb(98 98 98 / 49%) 0%, rgba(255 255 255 / 10%) 100%);
+    --clr-primary-green: hsl(71, 79%, 59%);
   }
 
   .dark {

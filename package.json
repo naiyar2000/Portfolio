@@ -13,6 +13,7 @@
     "@dnd-kit/modifiers": "^9.0.0",
     "@firebase/auth": "^1.8.1",
     "@firebase/firestore": "^4.7.5",
+    "@fontsource/poppins": "^5.2.5",
     "@lottiefiles/dotlottie-react": "^0.11.0",
     "@radix-ui/react-checkbox": "^1.1.2",
     "@radix-ui/react-dialog": "^1.1.2",

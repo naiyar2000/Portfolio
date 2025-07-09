@@ -151,51 +151,42 @@ const SkillSection: React.FC = () => {
     }, [isInView]);
 
     // useEffect(() => {
-    //     if (!isInView) {
-    //         window.removeEventListener("scroll", handleScroll);
-    //         window.removeEventListener("wheel", handleHorizontalScroll);
-    //         window.removeEventListener("touchmove", handleTouchMove);
 
+    //     let tempanimationFrameId: number;
+
+    //     const scrollHandler = () => {
+    //         const section = sectionRef.current;
+    //         if (!section) return;
+
+    //         const { bottom } = section.getBoundingClientRect();
+    //         const viewportHeight = window.innerHeight;
+
+    //         // Stop scrolling when the bottom of the section is within or above the viewport
+    //         if (bottom <= viewportHeight) {
+    //             return; // Stop the animation
+    //         }
+
+    //         // Scroll by a fixed amount
+    //         window.scrollBy(0, 2); // Adjust for smoother or faster scrolling
+    //         const tempanimationFrameId = requestAnimationFrame(scrollHandler);
+    //         setAnimationFrameId(tempanimationFrameId);
+    //     };
+
+    //     if (isInView) {
+    //         tempanimationFrameId = requestAnimationFrame(scrollHandler);
+    //         setAnimationFrameId(tempanimationFrameId);
+    //     } else {
+    //         cancelAnimationFrame(animationFrameId);
     //     }
-    // }, [isInView])
-
-    useEffect(() => {
-
-        let tempanimationFrameId: number;
-
-        const scrollHandler = () => {
-            const section = sectionRef.current;
-            if (!section) return;
-
-            const { bottom } = section.getBoundingClientRect();
-            const viewportHeight = window.innerHeight;
-
-            // Stop scrolling when the bottom of the section is within or above the viewport
-            if (bottom <= viewportHeight) {
-                return; // Stop the animation
-            }
-
-            // Scroll by a fixed amount
-            window.scrollBy(0, 2); // Adjust for smoother or faster scrolling
-            const tempanimationFrameId = requestAnimationFrame(scrollHandler);
-            setAnimationFrameId(tempanimationFrameId);
-        };
-
-        if (isInView) {
-            tempanimationFrameId = requestAnimationFrame(scrollHandler);
-            setAnimationFrameId(tempanimationFrameId);
-        } else {
-            cancelAnimationFrame(animationFrameId);
-        }
 
 
 
-        return () => {
-            if (animationFrameId) {
-                cancelAnimationFrame(animationFrameId);
-            }
-        };
-    }, [isInView]);
+    //     return () => {
+    //         if (animationFrameId) {
+    //             cancelAnimationFrame(animationFrameId);
+    //         }
+    //     };
+    // }, [isInView]);
 
 
     return (

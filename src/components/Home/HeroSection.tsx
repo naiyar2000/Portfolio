@@ -1,13 +1,11 @@
 "use client"
-import React, { useEffect } from 'react'
-import useAuthStore from '@/store/authStore'
+import React from 'react'
 import TextComponent from './TextComponent'
 import Image from 'next/image'
 import { prefix } from '@/prefix'
+import "../RentalCar/App.css"
 
 const HeroSection = () => {
-
-    const { user } = useAuthStore();
 
     return (
         <section className="relative min-h-screen flex flex-col pt-48 md:pt-0 md:flex-row md:items-center md:justify-between md:px-10">
@@ -28,6 +26,14 @@ const HeroSection = () => {
                     className="profile-image"
                     priority
                 />
+            </div>
+            <div className="absolute bottom-3 left-0 right-0 flex justify-end w-full">
+                <div className="scrolldown">
+                    <div className="chevrons">
+                        <div className="chevrondown"></div>
+                        <div className="chevrondown"></div>
+                    </div>
+                </div>
             </div>
         </section>
     )

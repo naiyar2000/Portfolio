@@ -1,6 +1,7 @@
 "use client";
 // import AboutSection from "@/components/About/AboutSection";
 import Contact from "@/components/Contact/Contact";
+import DemoBook from "@/components/Demo/Demo";
 import ExperienceSection from "@/components/Experience/ExperienceSection";
 import HeroSection from "@/components/Home/HeroSection";
 import GallerySection from "@/components/Work/GallerySection";
@@ -19,8 +20,9 @@ export default function Home() {
       <HeroSection />
       {/* <AboutSection /> */}
       <SkillSection />
-      <ExperienceSection />
+      {/* <DemoBook /> */}
       <GallerySection />
+      <ExperienceSection />
       <Contact />
     </>
   );

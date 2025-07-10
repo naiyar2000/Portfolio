@@ -27,7 +27,7 @@ const HeroSection = () => {
                     priority
                 />
             </div>
-            <div className="absolute bottom-3 left-0 right-0 flex justify-end w-full">
+            <div className="absolute bottom-6 left-0 right-0 flex justify-center md:justify-end w-full">
                 <div className="scrolldown">
                     <div className="chevrons">
                         <div className="chevrondown"></div>

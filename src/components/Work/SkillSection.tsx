@@ -13,7 +13,6 @@ import TransitionComponent from "../AnimatedComponents/TransitionComponent";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import useInView from "@/app/hooks/useInView";
 import { useAppStore } from "@/store/appStore";
-import { TextGenerateEffect } from "../ui/text-generate-effect";
 
 export const skillData: {
     label: string;
@@ -199,7 +198,7 @@ const SkillSection: React.FC = () => {
                     <div className="absolute inset-0">
                         <div className="flex flex-col justify-start items-center md:sticky top-0 h-screen flex-1">
                             <div className="flex flex-col  items-center gap-16 justify-between">
-                                <TextGenerateEffect className="text-2xl md:text-5xl font-bold" duration={0} words={"Welcome to My Portfolio"} />
+                                <h1 className="text-2xl md:text-5xl font-bold">{"Welcome to My Portfolio"}</h1>
                                 <DotLottieReact
                                     className=''
                                     src={`${prefix}/animatedSVG.lottie`}

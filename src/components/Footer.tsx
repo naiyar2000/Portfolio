@@ -1,4 +1,5 @@
 import { Mail, Linkedin, Github } from "lucide-react";
+import { Boxes } from "./ui/background-boxes";
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
@@ -8,6 +9,10 @@ export default function Footer() {
             className="bg-gradient-to-br text-gray-300 py-12"
         >
             <div className="container mx-auto px-6">
+                <div className="h-full relative w-full overflow-hidden flex flex-col items-center justify-center rounded-lg">
+                    <div className="absolute inset-0 w-full h-full z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
+                    <Boxes />
+                </div>
                 <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
                     {/* Updated Left Section */}
                     <div className="max-w-md">

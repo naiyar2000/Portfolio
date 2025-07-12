@@ -14,12 +14,12 @@ export default function RootLayout({
 }>) {
 
   return (
-    <body>
+    <>
       <LayoutComponents showLinks={true} />
       <div className="px-6 md:px-16">
         {children}
       </div>
       <Footer />
-    </body>
+    </>
   );
 }

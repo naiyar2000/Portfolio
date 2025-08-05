@@ -728,5 +728,29 @@
   }
   
   
+
+  .swipe-in {
+  opacity: 0;
+  transform: translateX(100px);
+  transition: all 0.6s ease-out;
+}
+
+.swipe-in.from-left {
+  transform: translateX(-100px);
+}
+
+.swipe-in.from-top {
+  transform: translateY(-100px);
+}
+
+.swipe-in.from-bottom {
+  transform: translateY(100px);
+}
+
+.swipe-in.active {
+  opacity: 1;
+  transform: translateX(0) translateY(0);
+}
+
   
   
